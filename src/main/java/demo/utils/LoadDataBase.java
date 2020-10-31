@@ -12,6 +12,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import demo.model.Usuario;
+import demo.repository.UsuarioRepository;
 import demo.repository.ViajeRepository;
 
 
@@ -23,8 +25,11 @@ class LoadDatabase {
 	
 	@Bean
     CommandLineRunner initDatabaseProducto(
-    		@Qualifier("viajeRepository") ViajeRepository repositoryViaje) {
+    		@Qualifier("usuarioRepository") UsuarioRepository repositoryUsuario) {
 		 return args -> {
+		    	Usuario u1 = new Usuario(Long.valueOf("1"), "a","a", "a");
+	            log.info("Preloading " + repositoryUsuario.save(u1));
+
 		 	};
 			}
 	}

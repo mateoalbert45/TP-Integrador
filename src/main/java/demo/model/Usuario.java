@@ -22,18 +22,18 @@ public class Usuario {
 	@Column
 	private String nombre;
 	@Column
-	private String contrasenia;
+	private String contraseña;
 	@Column
 	private String mail;
 	
 	
 	public Usuario() {}
 
-	public Usuario(Long id, String nombre, String contrasenia, String mail) {
+	public Usuario(Long id, String nombre, String contraseña, String mail) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.contrasenia = contrasenia;
+		this.contraseña = contraseña;
 		this.mail = mail;
 	}
 

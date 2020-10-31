@@ -2,6 +2,7 @@
 document.querySelector("#submitPostViaje").addEventListener("click", postViaje);
 document.querySelector("#submitAsignarVuelo").addEventListener("click", asignarVuelo);
 document.querySelector("#submitGetVuelos").addEventListener("click", getVuelos);
+document.querySelector("#submitLogin").addEventListener("click", getIdUsuario);
 
 
 function postViaje(){ //Método para postear un viaje, agarramos los values de los inputs de la pagina, creamos un objeto con esos datos y lo subimos a la base
@@ -79,26 +80,21 @@ let contenedor = document.querySelector("#contenedorVuelo");
 contenedor.innerHTML = JSON.stringify(json);
 }
 
-function asignarPlan(){ //Método para postear un viaje, agarramos los values de los inputs de la pagina, creamos un objeto con esos datos y lo subimos a la base
-	let idViaje = document.querySelector("#idAsigViaje").value;
-	let idPlan = document.querySelector("#idAsigPlan").value;
-	let info = document.querySelector("#idAsigInfo").value;
-	let plan = {
-	      "id": idPlan,
-	      "descripcion": info,
-	 };
-	 console.log(plan);
-	 let url = "viaje/asignarPlan/" + idViaje;
-	 fetch(url, {
-	     'method': 'POST',
-	      'headers': {
-	        'Content-Type': 'application/json',
-	        'Accept': 'application/json'
-	     },
-	     'body': JSON.stringify(plan)
-	 })
-}
 
+
+async function getIdUsuario(){
+	let mail = document.querySelector("#idMail").value;
+	let contraseña = document.querySelector("#idContraseña").value;
+  let url = "usuario/getId/";
+let r = await fetch(url + mail + "/" + contraseña , {
+     'method': 'GET',
+      'mode':'cors'
+ });
+let json = await r.json();
+console.log(json);
+let contenedor = document.querySelector("#idUsuario");
+contenedor.innerHTML = JSON.stringify(json);
+}
 
 
 /*
