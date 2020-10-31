@@ -99,7 +99,7 @@ contenedor.innerHTML = JSON.stringify(json);
 
 
 function asignarPlan(){
-	let idViaje = document.querySelector("#idAsignarViaje").value;
+	let idViaje = document.querySelector("#idAsignarPlanViaje").value;
 	let idPlan = document.querySelector("#idAsignarPlan").value;
 	let info = document.querySelector("#idAsignarInfo").value;
 	let plan = {

@@ -60,9 +60,7 @@ public class Viaje {
 	}
 
 
-	public void addPlan(Plan p, Long idViaje) {
-		ViajePlanPK pk = new ViajePlanPK(idViaje, p.getId());
-		ViajePlan vp = new ViajePlan(pk, this , p);
+	public void addPlan(ViajePlan vp) {
 		planes.add(vp);
 	}
 	
