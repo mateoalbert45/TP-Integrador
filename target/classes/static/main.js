@@ -37,26 +37,26 @@ function postViaje(){ //Método para postear un viaje, agarramos los values de l
 function postUsuario(){ //Método para postear un viaje, agarramos los values de los inputs de la pagina, creamos un objeto con esos datos y lo subimos a la base
 
 	let id = document.querySelector("#idUsuario").value;
+	let nombre = document.querySelector("#idNombreReg").value;
 	let contraseña = document.querySelector("#idContraseñaReg").value;
 	let mail = document.querySelector("#idMailReg").value;
-	let nombre = document.querySelector("#idNombreReg").value;
 
-	let viaje = {
+	let usuario = {
 	      "id": id,
+				"nombre": nombre,
 	       "contraseña": contraseña,
-			"mail": mail,
-			"nombre": nombre
+				 "mail": mail,
 
 	 };
-	 console.log(viaje);
-	 let url = "viaje/add";
+	 console.log(usuario);
+	 let url = "usuario/add";
 	 fetch(url, {
 	     'method': 'POST',
 	      'headers': {
 	        'Content-Type': 'application/json',
 	        'Accept': 'application/json'
 	     },
-	     'body': JSON.stringify(viaje)
+	     'body': JSON.stringify(usuario)
 	 })
 }
 function asignarVuelo(){ //Método para postear un viaje, agarramos los values de los inputs de la pagina, creamos un objeto con esos datos y lo subimos a la base
