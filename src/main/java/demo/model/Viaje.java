@@ -23,7 +23,7 @@ public class Viaje {
 	@Column
 	private String nombre;
 	@Column
-	private List<String> destinos;
+	private String destinos;
 	@Column
 	private String fechaInicio;
 	@Column
