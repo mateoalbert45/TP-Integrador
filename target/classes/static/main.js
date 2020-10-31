@@ -4,6 +4,7 @@ document.querySelector("#submitAsignarVuelo").addEventListener("click", asignarV
 document.querySelector("#submitGetVuelos").addEventListener("click", getVuelos);
 document.querySelector("#submitLogin").addEventListener("click", getIdUsuario);
 document.querySelector("#submitAsignarPlan").addEventListener("click", asignarPlan);
+document.querySelector("#submitRegister").addEventListener("click", postUsuario);
 
 
 function postViaje(){ //Método para postear un viaje, agarramos los values de los inputs de la pagina, creamos un objeto con esos datos y lo subimos a la base
@@ -20,6 +21,32 @@ function postViaje(){ //Método para postear un viaje, agarramos los values de l
 	       "fechaInicio": fechaIni,
 			"fechaFin": fechaFin,
 			"descripcion": descripcion
+	 };
+	 console.log(viaje);
+	 let url = "viaje/add";
+	 fetch(url, {
+	     'method': 'POST',
+	      'headers': {
+	        'Content-Type': 'application/json',
+	        'Accept': 'application/json'
+	     },
+	     'body': JSON.stringify(viaje)
+	 })
+}
+
+function postUsuario(){ //Método para postear un viaje, agarramos los values de los inputs de la pagina, creamos un objeto con esos datos y lo subimos a la base
+
+	let id = document.querySelector("#idUsuario").value;
+	let contraseña = document.querySelector("#idContraseñaReg").value;
+	let mail = document.querySelector("#idMailReg").value;
+	let nombre = document.querySelector("#idNombreReg").value;
+
+	let viaje = {
+	      "id": id,
+	       "contraseña": contraseña,
+			"mail": mail,
+			"nombre": nombre
+
 	 };
 	 console.log(viaje);
 	 let url = "viaje/add";
