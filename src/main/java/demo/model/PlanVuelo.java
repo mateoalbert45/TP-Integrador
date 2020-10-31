@@ -6,4 +6,7 @@ import lombok.Data;
 
 public class PlanVuelo extends Plan{
 		private Vuelo vuelo;
+		
+		public PlanVuelo() {}
+
 }

@@ -33,6 +33,10 @@ public class Vuelo {
 	private String informacionAeronave;
 	
 	
+	public Vuelo() {
+		
+	}	
+	
 	public Vuelo(Long id, String compania, String fechaSalida, String fechaLlegada, String aeropuertoSalida,
 			String aeropuertoLlegada, Long codigoReserva, Long tiempoEntreEscalas, String informacionAeronave) {
 		super();

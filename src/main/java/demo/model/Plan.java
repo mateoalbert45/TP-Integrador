@@ -15,4 +15,10 @@ public class Plan {
 	private Long id;
 	@Column
 	private String descripcion;
+	
+	
+	
+	
+	public Plan() {}
+	
 }

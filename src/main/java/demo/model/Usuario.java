@@ -27,7 +27,8 @@ public class Usuario {
 	private String mail;
 	
 	
-	
+	public Usuario() {}
+
 	public Usuario(Long id, String nombre, String contrasenia, String mail) {
 		super();
 		this.id = id;

@@ -1,14 +1,17 @@
 "use strict";
 document.querySelector("#submitPostViaje").addEventListener("click", postViaje);
+document.querySelector("#submitPostVuelo").addEventListener("click", postVuelo);
+document.querySelector("#submitGetVuelos").addEventListener("click", getVuelos);
+
 
 function postViaje(){ //Método para postear un viaje, agarramos los values de los inputs de la pagina, creamos un objeto con esos datos y lo subimos a la base
-	
+
 	let id = document.querySelector("#idAddViaje").value;
 	let nombre = document.querySelector("#idAddNombre").value;
 	let fechaIni = document.querySelector("#idAddFechaInicio").value;
 	let fechaFin = document.querySelector("#idAddFechaFin").value;
 	let descripcion = document.querySelector("#idAddDescripcion").value;
-	
+
 	let viaje = {
 	      "id": id,
 	      "nombre": nombre,
@@ -27,6 +30,49 @@ function postViaje(){ //Método para postear un viaje, agarramos los values de l
 	     'body': JSON.stringify(viaje)
 	 })
 }
+function postVuelo(){ //Método para postear un viaje, agarramos los values de los inputs de la pagina, creamos un objeto con esos datos y lo subimos a la base
+
+	let id = document.querySelector("#idAddVuelo").value;
+	let compañia = document.querySelector("#idAddCompañia").value;
+	let fechaSalida = document.querySelector("#idFechaSalida").value;
+	let fechaFin = document.querySelector("#idFechaLlegada").value;
+	let codigoReserva = document.querySelector("#idAddReserva").value;
+	let escala = document.querySelector("#idAddTiempo").value;
+	let info = document.querySelector("#idAddInfo").value;
+
+
+	let vuelo = {
+	      "id": id,
+	      "compañia": compañia,
+	       "fechaSalida": fechaSalida,
+			"fechaFin": fechaFin,
+			"codigoReserva": codigoReserva,
+			"escala": escala,
+			"info": info
+	 };
+	 console.log(vuelo);
+	 let url = "vuelo/add";
+	 fetch(url, {
+	     'method': 'POST',
+	      'headers': {
+	        'Content-Type': 'application/json',
+	        'Accept': 'application/json'
+	     },
+	     'body': JSON.stringify(vuelo)
+	 })
+}
+async function getVuelos(){
+  let  url = "vuelo/getAll";
+let r = await fetch(url, {
+     'method': 'GET',
+      'mode':'cors'
+ });
+let json = await r.json();
+console.log(json);
+let contenedor = document.querySelector("#contenedorVuelo");
+contenedor.innerHTML = JSON.stringify(json);
+}
+
 
 /*
 document.querySelector("#submitPutProducto").addEventListener("click", putProducto);

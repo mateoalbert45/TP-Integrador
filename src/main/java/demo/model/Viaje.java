@@ -23,7 +23,7 @@ public class Viaje {
 	@Column
 	private String nombre;
 	@Column
-	private List<String> destinos;
+	private String destinos;
 	@Column
 	private String fechaInicio;
 	@Column
@@ -38,6 +38,8 @@ public class Viaje {
     @JoinColumn(name = "idUsuario", referencedColumnName = "id")
 	private Usuario usuario;
 	
+	public Viaje() {}
+
 	
 	public Viaje(Long id, String nombre, String fechaInicio, String fechaFin, String descripcion) {
 		super();
