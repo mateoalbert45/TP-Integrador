@@ -32,6 +32,60 @@ function postViaje(){ //Método para postear un viaje, agarramos los values de l
 	     'body': JSON.stringify(viaje)
 	 })
 }
+
+//carga datos desde archivo .txt
+ let openFile = function(event) 
+     {
+         let input = event.target;
+         let reader = new FileReader();
+         reader.onload = function()
+         {
+             let texto = reader.result;
+             let texto_array = texto.split("\r\n");
+             let id;
+             let nombre;
+             let fechaIni;
+             let fechaFin;
+             let descripcion;
+             let i = 0;
+             for (let element in texto_array) 
+             {
+                 let json_element;
+                 if(i%5 == 0)
+                     id = texto_array[element];
+                 else if(i%5 == 1)
+                     nombre = texto_array[element];
+                 else if(i%5 == 2)
+                     fechaIni = texto_array[element];
+                 else if(i%5 == 3)
+                     fechaFin = texto_array[element];
+                 else if(i%5 == 4)
+                 {
+                     descripcion = texto_array[element];
+                        let viaje = {
+                            "id": id,
+                            "nombre": nombre,
+                            "fechaInicio": fechaIni,
+                            "fechaFin": fechaFin,
+                            "descripcion": descripcion
+                    };
+                    console.log(viaje);
+                    let url = "viaje/add";
+                    fetch(url, {
+                        'method': 'POST',
+                         'headers': {
+                           'Content-Type': 'application/json',
+                           'Accept': 'application/json'
+                        },
+                        'body': JSON.stringify(viaje)
+                    })
+                 }
+                 i++;
+             }
+         };
+         reader.readAsText(input.files[0]);
+     }
+
 function asignarVuelo(){ //Método para postear un viaje, agarramos los values de los inputs de la pagina, creamos un objeto con esos datos y lo subimos a la base
 	let idViaje = document.querySelector("#idAsignarViaje").value;
 	let idVuelo = document.querySelector("#idAsignarVuelo").value;
