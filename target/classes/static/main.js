@@ -51,7 +51,7 @@ function asignarVuelo(){ //Método para postear un viaje, agarramos los values d
 			"info": info
 	 };
 	 console.log(vuelo);
-	 let url = "vuelo/asignarVuelo/" + idViaje;
+	 let url = "viaje/asignarVuelo/" + idViaje;
 	 fetch(url, {
 	     'method': 'POST',
 	      'headers': {
