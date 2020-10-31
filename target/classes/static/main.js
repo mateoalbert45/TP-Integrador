@@ -35,20 +35,24 @@ function asignarVuelo(){ //Método para postear un viaje, agarramos los values d
 	let idVuelo = document.querySelector("#idAsignarVuelo").value;
 	let compañia = document.querySelector("#idAsignarCompañia").value;
 	let fechaSalida = document.querySelector("#idAsignarFechaSalida").value;
-	let fechaFin = document.querySelector("#idAsignarFechaLlegada").value;
+	let fechaLlegada = document.querySelector("#idAsignarFechaLlegada").value;
+	let aeropuertoSalida = document.querySelector("#idAsignarAeropuertoSalida").value;
+	let aeropuertoLlegada = document.querySelector("#idAsignarAeropuertoLlegada").value;
 	let codigoReserva = document.querySelector("#idAsignarReserva").value;
-	let escala = document.querySelector("#idAsignarTiempo").value;
-	let info = document.querySelector("#idAsignarInfo").value;
+	let tiempoEntreEscalas = document.querySelector("#idAsignarTiempo").value;
+	let informacionAeronave = document.querySelector("#idAsignarInfo").value;
 
-
+idAsignarFechaLlegada
 	let vuelo = {
 	      "id": idVuelo,
 	      "compañia": compañia,
 	       "fechaSalida": fechaSalida,
-			"fechaFin": fechaFin,
+			"fechaLlegada": fechaLlegada,
+			"aeropuertoSalida": aeropuertoSalida,
+			"aeropuertoLlegada": aeropuertoLlegada,
 			"codigoReserva": codigoReserva,
-			"escala": escala,
-			"info": info
+			"tiempoEntreEscalas": tiempoEntreEscalas,
+			"informacionAeronave": informacionAeronave
 	 };
 	 console.log(vuelo);
 	 let url = "viaje/asignarVuelo/" + idViaje;

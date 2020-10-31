@@ -14,7 +14,7 @@ public class Vuelo {
 	@Id
 	private Long id;
 	@Column
-	private String compania;
+	private String compañia;
 	@Column
 	private String fechaSalida;
 	//fijate que tiene que ser formato fecha y hora
@@ -41,7 +41,7 @@ public class Vuelo {
 			String aeropuertoLlegada, Long codigoReserva, Long tiempoEntreEscalas, String informacionAeronave) {
 		super();
 		this.id = id;
-		this.compania = compania;
+		this.compañia = compania;
 		this.fechaSalida = fechaSalida;
 		this.fechaLlegada = fechaLlegada;
 		this.aeropuertoSalida = aeropuertoSalida;

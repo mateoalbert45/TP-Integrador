@@ -59,13 +59,22 @@ public class ViajeController {
 		        repository.deleteById(id);
 		    }
 		
-	    @PostMapping("/asignarVuelo/{id}")
-	    public Viaje asignarVuelo(@RequestBody Vuelo vuelo, @PathVariable Long idViaje) {
-	    	Optional<Viaje> viaje = repository.findById(idViaje);
-	    	viaje.get().addVuelo(vuelo);
-	        return repository.save(viaje.get());
-	    }
 		
+	    @PostMapping("/asignarVuelo/{idViaje}")
+	    public Viaje asignarVuelo(@RequestBody Vuelo vuelo, @PathVariable Long idViaje) {
+	        return repository.findById(idViaje)
+            .map(viaje -> {
+            	viaje.addVuelo(vuelo);
+                return repository.save(viaje);
+            })
+            .orElseGet(() -> {
+                return null;
+            });
+	    
+	    }
+
+	    
+	    
 //		 @PutMapping("/update/{id}") public Cliente updateCliente(@RequestBody Cliente c, @PathVariable Long id) {
 //		        return repository.findById(id)
 //		                .map(cliente -> {
