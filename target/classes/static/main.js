@@ -3,6 +3,7 @@ document.querySelector("#submitPostViaje").addEventListener("click", postViaje);
 document.querySelector("#submitAsignarVuelo").addEventListener("click", asignarVuelo);
 document.querySelector("#submitGetVuelos").addEventListener("click", getVuelos);
 document.querySelector("#submitLogin").addEventListener("click", getIdUsuario);
+document.querySelector("#submitAsignarPlan").addEventListener("click", asignarPlan);
 
 
 function postViaje(){ //Método para postear un viaje, agarramos los values de los inputs de la pagina, creamos un objeto con esos datos y lo subimos a la base
@@ -96,6 +97,26 @@ let contenedor = document.querySelector("#idUsuario");
 contenedor.innerHTML = JSON.stringify(json);
 }
 
+
+function asignarPlan(){
+	let idViaje = document.querySelector("#idAsignarViaje").value;
+	let idPlan = document.querySelector("#idAsignarPlan").value;
+	let info = document.querySelector("#idAsignarInfo").value;
+	let plan = {
+	      "id": idPlan,
+	      "descripcion": info,
+	 };
+	 console.log(plan);
+	 let url = "viaje/asignarPlan/" + idViaje;
+	 fetch(url, {
+	     'method': 'POST',
+	      'headers': {
+	        'Content-Type': 'application/json',
+	        'Accept': 'application/json'
+	     },
+	     'body': JSON.stringify(plan)
+	 })
+}
 
 /*
 document.querySelector("#submitPutProducto").addEventListener("click", putProducto);
