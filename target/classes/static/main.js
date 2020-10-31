@@ -79,6 +79,27 @@ let contenedor = document.querySelector("#contenedorVuelo");
 contenedor.innerHTML = JSON.stringify(json);
 }
 
+function asignarPlan(){ //Método para postear un viaje, agarramos los values de los inputs de la pagina, creamos un objeto con esos datos y lo subimos a la base
+	let idViaje = document.querySelector("#idAsigViaje").value;
+	let idPlan = document.querySelector("#idAsigPlan").value;
+	let info = document.querySelector("#idAsigInfo").value;
+	let plan = {
+	      "id": idPlan,
+	      "descripcion": info,
+	 };
+	 console.log(plan);
+	 let url = "viaje/asignarPlan/" + idViaje;
+	 fetch(url, {
+	     'method': 'POST',
+	      'headers': {
+	        'Content-Type': 'application/json',
+	        'Accept': 'application/json'
+	     },
+	     'body': JSON.stringify(plan)
+	 })
+}
+
+
 
 /*
 document.querySelector("#submitPutProducto").addEventListener("click", putProducto);

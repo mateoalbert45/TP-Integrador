@@ -58,6 +58,13 @@ public class Viaje {
 	public void addVuelo(Vuelo v) {
 		vuelos.add(v);
 	}
+
+
+	public void addPlan(Plan p, Long idViaje) {
+		ViajePlanPK pk = new ViajePlanPK(idViaje, p.getId());
+		ViajePlan vp = new ViajePlan(pk, this , p);
+		planes.add(vp);
+	}
 	
 	
 	

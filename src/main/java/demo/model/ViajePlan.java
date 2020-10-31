@@ -33,6 +33,7 @@ public class ViajePlan {
 		public ViajePlan(){
 			super();
 		}
+
 	    
 	    
 	    
