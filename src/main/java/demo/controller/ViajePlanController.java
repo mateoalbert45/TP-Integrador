@@ -24,10 +24,11 @@ import demo.model.Viaje;
 import demo.model.ViajePlan;
 import demo.model.ViajePlanPK;
 import demo.model.Vuelo;
+import demo.repository.ViajePlanRepository;
 import demo.repository.ViajeRepository;
 
 @RestController
-@RequestMapping("viaje")
+@RequestMapping("viajePlan")
 
 /**
 * Esta clase administra los servicios rest de los clientes.
@@ -35,49 +36,40 @@ import demo.repository.ViajeRepository;
 * @version Octubre 21, 2020
 */
 
-public class ViajeController {
-	 	@Qualifier("viajeRepository")
+public class ViajePlanController {
+	 	@Qualifier("viajePlanRepository")
 	    @Autowired
-	    private final ViajeRepository repository;
+	    private final ViajePlanRepository repository;
 
 	
-		public ViajeController(@Qualifier("viajeRepository") ViajeRepository repository) {
+		public ViajePlanController(@Qualifier("viajePlanRepository") ViajePlanRepository repository) {
 			this.repository = repository;
 		}
 	
 	
 	    @GetMapping("/getAll")
-	    public Iterable<Viaje> getViajes() {
+	    public Iterable<ViajePlan> getViajePlane() {
 	        return repository.findAll();
 	    }
 	    
 	
 	    @PostMapping("/add")
-	    public Viaje newViaje(@RequestBody Viaje v) {
-	        return repository.save(v);
+	    public ViajePlan newViajePlan(@RequestBody ViajePlan vp) {
+	        return repository.save(vp);
 	    }
 
 		@DeleteMapping("/delete/{id}")
-		 void deleteViaje(@PathVariable Long id) {
+		 void deleteViajePlan(@PathVariable Long id) {
 		        repository.deleteById(id);
 		    }
-		
-		
-	    @PostMapping("/asignarVuelo/{idViaje}")
-	    public Viaje asignarVuelo(@RequestBody Vuelo vuelo, @PathVariable Long idViaje) {
-	        return repository.findById(idViaje)
-            .map(viaje -> {
-            	viaje.addVuelo(vuelo);
-                return repository.save(viaje);
-            })
-            .orElseGet(() -> {
-                return null;
-            });
-	    
+
+	    @PostMapping("/asignarPlanViaje/{idViaje}")
+	    public ViajePlan asignarPlan(@RequestBody Plan plan, @PathVariable Long idViaje) {
+			ViajePlanPK pk = new ViajePlanPK(idViaje, plan.getId());
+			Viaje v = repository.getViaje(idViaje);
+			ViajePlan vp = new ViajePlan(pk, v , plan);
+			return repository.save(vp);
 	    }
-
-
-	    
 	    
 //		 @PutMapping("/update/{id}") public Cliente updateCliente(@RequestBody Cliente c, @PathVariable Long id) {
 //		        return repository.findById(id)

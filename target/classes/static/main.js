@@ -101,21 +101,35 @@ contenedor.innerHTML = JSON.stringify(json);
 function asignarPlan(){
 	let idViaje = document.querySelector("#idAsignarPlanViaje").value;
 	let idPlan = document.querySelector("#idAsignarPlan").value;
-	let info = document.querySelector("#idAsignarInfo").value;
+	let info = document.querySelector("#idAsignarDescripcion").value;
 	let plan = {
 	      "id": idPlan,
 	      "descripcion": info,
 	 };
 	 console.log(plan);
-	 let url = "viaje/asignarPlan/" + idViaje;
-	 fetch(url, {
+	 let url = "viajePlan/asignarPlanViaje/" + idViaje;
+	 let urlAddPlan = "plan/add";
+
+	 fetch(urlAddPlan, {
 	     'method': 'POST',
 	      'headers': {
 	        'Content-Type': 'application/json',
 	        'Accept': 'application/json'
 	     },
 	     'body': JSON.stringify(plan)
-	 })
+	 }).then(function() {
+		 fetch(url, {
+		     'method': 'POST',
+		      'headers': {
+		        'Content-Type': 'application/json',
+		        'Accept': 'application/json'
+		     },
+		     'body': JSON.stringify(plan)
+		 })	   }, function() {
+	   // rechazo
+	 });
+
+
 }
 
 /*
