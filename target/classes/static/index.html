@@ -6,26 +6,34 @@
 </head>
 <body style="background-color:black; color: white" >
   <h1>Trabajo Final Integrador - grupo 4</h1>
-  <h1 style= "color:red">cambiar path </h1>
+  <h1 style="color:red">Usuario</h1>
+    <div>
+      <h1>Login</h1>
+      <input type="text" placeholder="Nombre usuario" id="idNombreUsuario"style= "display:list-item">
+      <input type="text" placeholder="Contraseña" id="idContraseña"style= "display:list-item">
+      <button type="button" id="submitLogin" >Aceptar</button>
+    </div>
+  <h1 style="color:red">Viaje</h1>
   <div>
-    <h1>Add Viaje</h1>
-    <input type="number" placeholder="id" id="idAddViaje"style= "display:list-item">
-    <input type="text" placeholder="nombre" id="idAddNombre"style= "display:list-item">
-    <input type="text" placeholder="fecha Inicio" id="idAddFechaInicio"style= "display:list-item">
-    <input type="text" placeholder="fecha Fin" id="idAddFechaFin"style= "display:list-item">
-    <input type="text" placeholder="descripcion" id="idAddDescripcion"style= "display:list-item">
+    <h1>Asignar vuelo a un viaje</h1>
+    <input type="number" placeholder="Id viaje" id="idAddViaje"style= "display:list-item">
+    <input type="text" placeholder="Nombre" id="idAddNombre"style= "display:list-item">
+    <input type="text" placeholder="Fecha Inicio" id="idAddFechaInicio"style= "display:list-item">
+    <input type="text" placeholder="Fecha Fin" id="idAddFechaFin"style= "display:list-item">
+    <input type="text" placeholder="Descripcion" id="idAddDescripcion"style= "display:list-item">
     <button type="button" id="submitPostViaje" >Aceptar</button>
   </div>
   <div>
-    <h1>Add Vuelo</h1>
-    <input type="number" placeholder="id viaje" id="idAddVuelo"style= "display:list-item">
-    <input type="text" placeholder="compañia" id="idAddCompañia"style= "display:list-item">
-    <input type="datetime" placeholder="fecha salida" id="idFechaSalida"style= "display:list-item">
-    <input type="datetime" placeholder="fecha llegada" id="idFechaLlegada"style= "display:list-item">
-    <input type="text" placeholder="codigo de reserva" id="idAddReserva"style= "display:list-item">
-    <input type="number" placeholder="tiempo de escala (horas)" id="idAddTiempo"style= "display:list-item">
-    <input type="text" placeholder="info aeronave" id="idAddInfo"style= "display:list-item">
-    <button type="button" id="submitPostVuelo" >Aceptar</button>
+    <h1>Asignar vuelo a un viaje</h1>
+    <input type="number" placeholder="id Viaje" id="idAsignarViaje"style= "display:list-item">
+    <input type="number" placeholder="id Vuelo" id="idAsignarVuelo"style= "display:list-item">
+    <input type="text" placeholder="Compañia" id="idAsignarCompañia"style= "display:list-item">
+    <input type="datetime" placeholder="Fecha salida" id="idAsignarFechaSalida"style= "display:list-item">
+    <input type="datetime" placeholder="Fecha llegada" id="idAsignarFechaLlegada"style= "display:list-item">
+    <input type="text" placeholder="Codigo de reserva" id="idAsignarReserva"style= "display:list-item">
+    <input type="number" placeholder="Tiempo de escala (horas)" id="idAsignarTiempo"style= "display:list-item">
+    <input type="text" placeholder="Info aeronave" id="idAsignarInfo"style= "display:list-item">
+    <button type="button" id="submitAsignarVuelo" >Aceptar</button>
   </div>
   <div>
     <h1>Get Vuelos</h1>

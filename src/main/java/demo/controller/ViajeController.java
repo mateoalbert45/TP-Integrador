@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import demo.model.Viaje;
+import demo.model.Vuelo;
 import demo.repository.ViajeRepository;
 
 @RestController
@@ -57,6 +58,13 @@ public class ViajeController {
 		 void deleteViaje(@PathVariable Long id) {
 		        repository.deleteById(id);
 		    }
+		
+	    @PostMapping("/asignarVuelo/{id}")
+	    public Viaje asignarVuelo(@RequestBody Vuelo vuelo, @PathVariable Long idViaje) {
+	    	Optional<Viaje> viaje = repository.findById(idViaje);
+	    	viaje.get().addVuelo(vuelo);
+	        return repository.save(viaje.get());
+	    }
 		
 //		 @PutMapping("/update/{id}") public Cliente updateCliente(@RequestBody Cliente c, @PathVariable Long id) {
 //		        return repository.findById(id)

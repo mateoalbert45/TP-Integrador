@@ -1,6 +1,6 @@
 "use strict";
 document.querySelector("#submitPostViaje").addEventListener("click", postViaje);
-document.querySelector("#submitPostVuelo").addEventListener("click", postVuelo);
+document.querySelector("#submitAsignarVuelo").addEventListener("click", asignarVuelo);
 document.querySelector("#submitGetVuelos").addEventListener("click", getVuelos);
 
 
@@ -30,19 +30,19 @@ function postViaje(){ //Método para postear un viaje, agarramos los values de l
 	     'body': JSON.stringify(viaje)
 	 })
 }
-function postVuelo(){ //Método para postear un viaje, agarramos los values de los inputs de la pagina, creamos un objeto con esos datos y lo subimos a la base
-
-	let id = document.querySelector("#idAddVuelo").value;
-	let compañia = document.querySelector("#idAddCompañia").value;
-	let fechaSalida = document.querySelector("#idFechaSalida").value;
-	let fechaFin = document.querySelector("#idFechaLlegada").value;
-	let codigoReserva = document.querySelector("#idAddReserva").value;
-	let escala = document.querySelector("#idAddTiempo").value;
-	let info = document.querySelector("#idAddInfo").value;
+function asignarVuelo(){ //Método para postear un viaje, agarramos los values de los inputs de la pagina, creamos un objeto con esos datos y lo subimos a la base
+	let idViaje = document.querySelector("#idAsignarViaje").value;
+	let idVuelo = document.querySelector("#idAsignarVuelo").value;
+	let compañia = document.querySelector("#idAsignarCompañia").value;
+	let fechaSalida = document.querySelector("#idAsignarFechaSalida").value;
+	let fechaFin = document.querySelector("#idAsignarFechaLlegada").value;
+	let codigoReserva = document.querySelector("#idAsignarReserva").value;
+	let escala = document.querySelector("#idAsignarTiempo").value;
+	let info = document.querySelector("#idAsignarInfo").value;
 
 
 	let vuelo = {
-	      "id": id,
+	      "id": idVuelo,
 	      "compañia": compañia,
 	       "fechaSalida": fechaSalida,
 			"fechaFin": fechaFin,
@@ -51,7 +51,7 @@ function postVuelo(){ //Método para postear un viaje, agarramos los values de l
 			"info": info
 	 };
 	 console.log(vuelo);
-	 let url = "vuelo/add";
+	 let url = "vuelo/asignarVuelo/" + idViaje;
 	 fetch(url, {
 	     'method': 'POST',
 	      'headers': {
@@ -61,6 +61,8 @@ function postVuelo(){ //Método para postear un viaje, agarramos los values de l
 	     'body': JSON.stringify(vuelo)
 	 })
 }
+
+
 async function getVuelos(){
   let  url = "vuelo/getAll";
 let r = await fetch(url, {
