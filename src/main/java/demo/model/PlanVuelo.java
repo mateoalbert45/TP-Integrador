@@ -19,12 +19,15 @@ public class PlanVuelo extends Plan{
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "idVuelo", referencedColumnName = "id")
 	private Vuelo vuelo;
+	
+	private String prueba;
 		
 	public PlanVuelo() {}
 	
 	public PlanVuelo(Long id, String descripcion,Vuelo vuelo) {
 		super(id,descripcion);
 		this.vuelo = vuelo;
+		this.prueba = "aaaaaaaaaaaaaaaaaaaaaaaaaaa";
 	}
 
 

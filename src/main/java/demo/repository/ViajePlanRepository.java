@@ -18,4 +18,8 @@ public interface ViajePlanRepository extends JpaRepository<ViajePlan, Long> {
 	   
 	   @Query("select p FROM Plan p where id=:idPlan")
 	    public Plan getPlan(long idPlan);
+	   
+	   @Query("select p FROM ViajePlan vp join vp.viaje v join vp.plan p where v.id=:idViaje")
+	    public List<Plan> planSegunViaje(long idViaje);
+	   
 }

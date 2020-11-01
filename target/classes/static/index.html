@@ -36,20 +36,12 @@
     <button type="button" id="submitPostViaje" >Aceptar</button>
   </div>
   <div>
-    <h1>Asignar vuelo a un vuelo</h1>
-    <input type="number" placeholder="id Viaje" id="idAsignarViaje"style= "display:list-item">
-    <input type="number" placeholder="id Vuelo" id="idAsignarVuelo"style= "display:list-item">
-    <input type="text" placeholder="Compañia" id="idAsignarCompañia"style= "display:list-item">
-    <input type="datetime" placeholder="Fecha salida" id="idAsignarFechaSalida"style= "display:list-item">
-    <input type="datetime" placeholder="Fecha llegada" id="idAsignarFechaLlegada"style= "display:list-item">
-    <input type="text" placeholder="Aeropuerto Salida" id="idAsignarAeropuertoSalida"style= "display:list-item">
-    <input type="text" placeholder="Aeropuerto Llegada" id="idAsignarAeropuertoLlegada"style= "display:list-item">
-    <input type="text" placeholder="Codigo de reserva" id="idAsignarReserva"style= "display:list-item">
-    <input type="number" placeholder="Tiempo de escala (horas)" id="idAsignarTiempo"style= "display:list-item">
-    <input type="text" placeholder="Info aeronave" id="idAsignarInfo"style= "display:list-item">
-    <button type="button" id="submitAsignarVuelo" >Aceptar</button>
-  </div>
+    <p>ii) enviando un archivo de texto, que contenga toda la confirmación de la reserva. En este caso, el sistema debe extraer los datos del archivo y cargarlos.</p>
+    <h1>Cargar desde archivo</h1>
+    <input type='file' accept='text/plain' onchange='openFile(event)'>
+</div>
   <div>
+    <p>Para un vuelo que ha sido cargado, la aplicación deberá mostrar número de vuelo, compañía, fecha y mas cosas</p>
     <h1>Get Vuelos</h1>
     <button type="button" id="submitGetVuelos" >Aceptar</button>
     <div id="contenedorVuelo">
@@ -78,6 +70,13 @@
     <input type="number" placeholder="Tiempo de escala (horas)" id="idApvTiempo"style= "display:list-item">
     <input type="text" placeholder="Info aeronave" id="idApvInfo"style= "display:list-item">
     <button type="button" id="submitApvVuelo" >Aceptar</button>
+  </div>
+  <div>
+    <h1>Recuperar todos los planes de un viaje</h1>
+    <input type="number" placeholder="id Viaje" id="idViajeTraerPlanes"style= "display:list-item">
+    <button type="button" id="submitPlanesSegunViaje" >Aceptar</button>
+    <div id="contenedorPlanSegunViaje">
+    </div>
   </div>
 </body>
 <script src="main.js" charset="utf-8"></script>

@@ -35,6 +35,7 @@ public class Viaje {
 	private String descripcion;
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "plan")
+	
 	private List <ViajePlan> planes;
 	@JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
@@ -54,10 +55,6 @@ public class Viaje {
 	}
 	
 
-
-	public void addPlan(ViajePlan vp) {
-		planes.add(vp);
-	}
 	
 	
 	

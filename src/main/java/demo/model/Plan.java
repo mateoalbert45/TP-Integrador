@@ -24,6 +24,7 @@ public class Plan {
 	private String descripcion;
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "viaje")
+	
 	private List <ViajePlan> viajes;
 	
 	
