@@ -1,5 +1,6 @@
 package demo.model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -28,9 +29,9 @@ public class Viaje {
 	@Column
 	private String destinos;
 	@Column
-	private String fechaInicio;
+	private LocalDate fechaInicio;
 	@Column
-	private String fechaFin;
+	private LocalDate fechaFin;
 	@Column
 	private String descripcion;
 	@JsonIgnore
@@ -45,7 +46,7 @@ public class Viaje {
 	public Viaje() {}
 
 	
-	public Viaje(Long id, String nombre, String fechaInicio, String fechaFin, String descripcion) {
+	public Viaje(Long id, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String descripcion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;

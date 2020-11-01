@@ -6,6 +6,12 @@ document.querySelector("#submitLogin").addEventListener("click", getIdUsuario);
 document.querySelector("#submitAsignarPlan").addEventListener("click", asignarPlan);
 document.querySelector("#submitRegister").addEventListener("click", postUsuario);
 document.querySelector("#submitPlanesSegunViaje").addEventListener("click", planesSegunViaje);
+document.querySelector("#submitPorRealizar").addEventListener("click", getReporteViajesPorRealizar);
+document.querySelector("#submitFinalizados").addEventListener("click", getReporteViajesFinalizados);
+document.querySelector("#submitRango").addEventListener("click", getReporteViajesRango);
+
+
+
 
 
 
@@ -244,9 +250,34 @@ function asignarPlan(){
 		 })	   }, function() {
 	   // rechazo
 	 });
+ }
+	 async function getReporteViajesPorRealizar(){
+		 let idUsuario = document.querySelector("#idUsuarioPorRealizar").value;
+		 let  url = "usuario/viajesPendientes/" +idUsuario;
+	 let r = await fetch(url, {
+				'method': 'GET',
+				 'mode':'cors'
+		});
+	 let json = await r.json();
+	 console.log(json);
+	 let contenedor = document.querySelector("#contenedorViajeRealizar");
+	 contenedor.innerHTML = JSON.stringify(json);
+	 }
+	 async function getReporteViajesFinalizados(){
+		 let idUsuario = document.querySelector("#idUsuarioFinalizados").value;
+		 let  url = "usuario/viajesFinalizados/" +idUsuario;
+	 let r = await fetch(url, {
+				'method': 'GET',
+				 'mode':'cors'
+		});
+	 let json = await r.json();
+	 console.log(json);
+	 let contenedor = document.querySelector("#contenedorViajeFinalizado");
+	 contenedor.innerHTML = JSON.stringify(json);
+	 }
 
 
-}
+
 
 
 async function planesSegunViaje(){
@@ -263,3 +294,17 @@ async function planesSegunViaje(){
 	let contenedor = document.querySelector("#contenedorPlanSegunViaje");
 	contenedor.innerHTML = JSON.stringify(json);
  }
+	 async function getReporteViajesRango(){
+		 let idUsuario = document.querySelector("#idUsuarioRango").value;
+		 let fecha1 = document.querySelector("#idFecha1Rango").value;
+		 let fecha2 = document.querySelector("#idFecha2Rango").value;
+		 let  url = "usuario/viajesRangoFecha/" +idUsuario + "/" + fecha1 + "/" + fecha2;
+	 let r = await fetch(url, {
+				'method': 'GET',
+				 'mode':'cors'
+		});
+	 let json = await r.json();
+	 console.log(json);
+	 let contenedor = document.querySelector("#contenedorViajeRango");
+	 contenedor.innerHTML = JSON.stringify(json);
+	 }
