@@ -39,7 +39,7 @@ class LoadDatabase {
 		    	Plan p1 = new PlanVuelo(Long.valueOf("1"), "a", v1);
 
 	            log.info("Preloading " + repositoryUsuario.save(u1));
-	            log.info("Preloading " + repositoryPlan.save(p1));
+//	            log.info("Preloading " + repositoryPlan.save(p1));
 
 		 	};
 			}

@@ -15,6 +15,7 @@ import lombok.Data;
 
 @Entity
 public class PlanVuelo extends Plan{
+	@JsonIgnore
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "idVuelo", referencedColumnName = "id")
 	private Vuelo vuelo;
@@ -30,6 +31,11 @@ public class PlanVuelo extends Plan{
 
 	public Vuelo getVuelo() {
 		return vuelo;
+	}
+	
+
+	public void setVuelo(Vuelo v) {
+		this.vuelo = v;
 	}
 	
 }
