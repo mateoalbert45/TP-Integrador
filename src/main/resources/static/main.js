@@ -129,7 +129,7 @@ function asignarPlanVuelo(){ //Método para postear un viaje, agarramos los valu
 	let tiempoEntreEscalas = document.querySelector("#idApvTiempo").value;
 	let informacionAeronave = document.querySelector("#idApvInfo").value;
 
-	let url = "plan/addPlanVuelo" ;
+	let url = "plan/addPlanVuelo/" + idPlan + "/" + descripcion;
 
 
 	let vuelo = {
@@ -157,7 +157,7 @@ function asignarPlanVuelo(){ //Método para postear un viaje, agarramos los valu
 	        'Content-Type': 'application/json',
 	        'Accept': 'application/json'
 	     },
-	     'body': JSON.stringify(plan)
+	     'body': JSON.stringify(vuelo)
 	 })
 	 // fetch(urlAddPlan, {
 		// 	 'method': 'POST',

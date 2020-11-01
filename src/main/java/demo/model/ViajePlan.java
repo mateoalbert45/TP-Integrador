@@ -18,12 +18,12 @@ public class ViajePlan {
     	
 	    @ManyToOne
 	    @MapsId("id") 
-	    @JoinColumn(name = "IdViaje")
+	    @JoinColumn(name = "IdViaje", referencedColumnName = "id")
 	    private Viaje viaje;
 
 	    @ManyToOne
 	    @MapsId("id")
-	    @JoinColumn(name = "idPlan")
+	    @JoinColumn(name = "idPlan", referencedColumnName = "id")
 	    private Plan plan;
 	
 //	    @Column

@@ -48,7 +48,6 @@ public class PlanController {
     @PostMapping("/addPlanVuelo/{idPlan}/{descripcionPlan}")
     public PlanVuelo newPlan(@RequestBody Vuelo v,@PathVariable long idPlan,@PathVariable String descripcionPlan) {
     	PlanVuelo p = new PlanVuelo(idPlan, descripcionPlan,v);
-    	//p.setVuelo();
     	System.out.println(p.getVuelo().getCompañia());
     	System.out.println(p.getVuelo().getAeropuertoLlegada());
         return repository.save(p);
