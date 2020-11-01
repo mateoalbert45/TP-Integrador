@@ -4,8 +4,9 @@ package demo.utils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
@@ -36,11 +37,17 @@ class LoadDatabase {
     		@Qualifier("vueloRepository") VueloRepository repositoryVuelo,
     		@Qualifier("viajeRepository") ViajeRepository repositoryViaje) {
 		 return args -> {
+			 	
+			 	LocalDate fecha1 = LocalDate.of(2025, 4, 12);
+			 	LocalDate fecha2 = LocalDate.of(2025, 5, 12);
+			 	LocalDate fecha3 = LocalDate.of(2025, 10, 12);
+			 	LocalDate fecha4 = LocalDate.of(2025, 10, 13);
+			 	
 		    	Usuario u1 = new Usuario(Long.valueOf("1"), "a","a", "a");
 		    	Vuelo v1 = new Vuelo(Long.valueOf("1"), "c", "c", "c", "c", "c", Long.valueOf("1"), Long.valueOf("1"), "c");
 		    	Plan p1 = new PlanVuelo(Long.valueOf("1"), "a", v1);
-		    	Viaje v = new Viaje(Long.valueOf("1"), "viaje", "12/10/2025", "12/11/2025", "xd");
-		    	Viaje viaje1 = new Viaje(Long.valueOf("2"), "viaje", "12/10/2010", "12/11/2010", "xd");
+		    	Viaje v = new Viaje(Long.valueOf("1"), "viaje", fecha1, fecha2, "xd");
+		    	Viaje viaje1 = new Viaje(Long.valueOf("2"), "viaje", fecha3, fecha4, "xd");
 		    	
 		    	v.setUsuario(u1);
 		    	viaje1.setUsuario(u1);
