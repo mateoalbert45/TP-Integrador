@@ -129,8 +129,8 @@ function asignarPlanVuelo(){ //Método para postear un viaje, agarramos los valu
 	let tiempoEntreEscalas = document.querySelector("#idApvTiempo").value;
 	let informacionAeronave = document.querySelector("#idApvInfo").value;
 
-	let url = "plan/addPlanVuelo/" + idPlan + "/" + descripcion;
-
+	let urlAddPlanVuelo = "plan/addPlanVuelo/" + idPlan + "/" + descripcion;
+	let urlAsignarPlanVuelo = "viajePlan/asignarPlanViaje/" + idViaje + "/" + idPlan;
 
 	let vuelo = {
 	      "id": idVuelo,
@@ -151,14 +151,26 @@ function asignarPlanVuelo(){ //Método para postear un viaje, agarramos los valu
 	 }
 	 console.log(plan);
 
-	 fetch(url, {
-	     'method': 'POST',
-	      'headers': {
-	        'Content-Type': 'application/json',
-	        'Accept': 'application/json'
-	     },
-	     'body': JSON.stringify(vuelo)
-	 })
+	 	 fetch(urlAddPlanVuelo, {
+	 	     'method': 'POST',
+	 	      'headers': {
+	 	        'Content-Type': 'application/json',
+	 	        'Accept': 'application/json'
+	 	     },
+	 	     'body': JSON.stringify(vuelo)
+	 	 }).then(function() {
+	 		 fetch(urlAsignarPlanVuelo, {
+	 		     'method': 'POST',
+	 		      'headers': {
+	 		        'Content-Type': 'application/json',
+	 		        'Accept': 'application/json'
+	 		     },
+	 		 })	   }, function() {
+	 	   // rechazo
+	 	 });
+
+
+
 	 // fetch(urlAddPlan, {
 		// 	 'method': 'POST',
 		// 		'headers': {
@@ -220,7 +232,7 @@ function asignarPlan(){
 	      "descripcion": info,
 	 };
 	 console.log(plan);
-	 let url = "viajePlan/asignarPlanViaje/" + idViaje;
+	 let url = "viajePlan/asignarPlanViaje/" + idViaje + "/" + idPlan;
 	 let urlAddPlan = "plan/add";
 
 	 fetch(urlAddPlan, {
@@ -237,7 +249,6 @@ function asignarPlan(){
 		        'Content-Type': 'application/json',
 		        'Accept': 'application/json'
 		     },
-		     'body': JSON.stringify(plan)
 		 })	   }, function() {
 	   // rechazo
 	 });

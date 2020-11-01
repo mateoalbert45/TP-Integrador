@@ -63,11 +63,12 @@ public class ViajePlanController {
 		        repository.deleteById(id);
 		    }
 
-	    @PostMapping("/asignarPlanViaje/{idViaje}")
-	    public ViajePlan asignarPlan(@RequestBody Plan plan, @PathVariable Long idViaje) {
-			ViajePlanPK pk = new ViajePlanPK(idViaje, plan.getId());
-			Viaje v = repository.getViaje(idViaje);
-			ViajePlan vp = new ViajePlan(pk, v , plan);
+	    @PostMapping("/asignarPlanViaje/{idViaje}/{idPlan}")
+	    public ViajePlan asignarPlan(@PathVariable Long idPlan, @PathVariable Long idViaje) {
+			ViajePlanPK pk = new ViajePlanPK(idViaje, idPlan);
+			Viaje viaje = repository.getViaje(idViaje);
+			Plan plan = repository.getPlan(idPlan);
+			ViajePlan vp = new ViajePlan(pk, viaje , plan);
 			return repository.save(vp);
 	    }
 	    
