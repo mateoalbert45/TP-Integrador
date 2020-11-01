@@ -29,5 +29,15 @@ public class Plan {
 	
 	
 	public Plan() {}
+
+
+
+	public Plan(Long id, String descripcion) {
+		super();
+		this.id = id;
+		this.descripcion = descripcion;
+	}
+	
+	
 	
 }

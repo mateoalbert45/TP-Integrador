@@ -46,6 +46,8 @@ public class PlanController {
     
     @PostMapping("/addPlanVuelo")
     public PlanVuelo newPlan(@RequestBody PlanVuelo p) {
+    	System.out.println(p.getVuelo().getCompañia());
+    	System.out.println(p.getVuelo().getAeropuertoLlegada());
         return repository.save(p);
     }
     
