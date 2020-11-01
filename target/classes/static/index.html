@@ -22,21 +22,15 @@
       <button type="button" id="submitLogin" >Aceptar</button>
       <div id="idUsuario"></div>
     </div>
-
-
   <h1 style="color:red">Viaje</h1>
   <div>
-    <h1>Asignar vuelo a un viaje</h1>
+    <h1>Crear Viaje</h1>
     <input type="number" placeholder="Id viaje" id="idAddViaje"style= "display:list-item">
     <input type="text" placeholder="Nombre" id="idAddNombre"style= "display:list-item">
     <input type="text" placeholder="Fecha Inicio" id="idAddFechaInicio"style= "display:list-item">
     <input type="text" placeholder="Fecha Fin" id="idAddFechaFin"style= "display:list-item">
     <input type="text" placeholder="Descripcion" id="idAddDescripcion"style= "display:list-item">
     <button type="button" id="submitPostViaje" >Aceptar</button>
-  </div>
-  <div>
-  		<h1>Cargar desde archivo</h1>
-  		<input type='file' accept='text/plain' onchange='openFile(event)'>
   </div>
   <div>
     <h1>Asignar vuelo a un vuelo</h1>
@@ -64,6 +58,23 @@
     <input type="number" placeholder="id Plan" id="idAsignarPlan"style= "display:list-item">
     <input type="text" placeholder="descripcion plan" id="idAsignarDescripcion"style= "display:list-item">
     <button type="button" id="submitAsignarPlan" >Aceptar</button>
+  </div>
+  <div>
+    <h1>Asignar Plan vuelo a un viaje</h1>
+    <!-- Apv: Asignar plan vuelo -->
+    <input type="number" placeholder="Id Viaje" id="idApvViaje"style= "display:list-item">
+    <input type="number" placeholder="Id Plan" id="idApvPlan"style= "display:list-item">
+    <input type="text" placeholder="Descripcion plan" id="idApvDescripcion"style= "display:list-item">
+    <input type="number" placeholder="Id Vuelo" id="idApvVuelo"style= "display:list-item">
+    <input type="text" placeholder="Compañia" id="idApvCompañia"style= "display:list-item">
+    <input type="datetime" placeholder="Fecha salida" id="idApvFechaSalida"style= "display:list-item">
+    <input type="datetime" placeholder="Fecha llegada" id="idApvFechaLlegada"style= "display:list-item">
+    <input type="text" placeholder="Aeropuerto Salida" id="idApvAeropuertoSalida"style= "display:list-item">
+    <input type="text" placeholder="Aeropuerto Llegada" id="idApvAeropuertoLlegada"style= "display:list-item">
+    <input type="text" placeholder="Codigo de reserva" id="idApvReserva"style= "display:list-item">
+    <input type="number" placeholder="Tiempo de escala (horas)" id="idApvTiempo"style= "display:list-item">
+    <input type="text" placeholder="Info aeronave" id="idApvInfo"style= "display:list-item">
+    <button type="button" id="submitApvVuelo" >Aceptar</button>
   </div>
 </body>
 <script src="main.js" charset="utf-8"></script>

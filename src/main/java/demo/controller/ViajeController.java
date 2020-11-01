@@ -63,18 +63,18 @@ public class ViajeController {
 		    }
 		
 		
-	    @PostMapping("/asignarVuelo/{idViaje}")
-	    public Viaje asignarVuelo(@RequestBody Vuelo vuelo, @PathVariable Long idViaje) {
-	        return repository.findById(idViaje)
-            .map(viaje -> {
-            	viaje.addVuelo(vuelo);
-                return repository.save(viaje);
-            })
-            .orElseGet(() -> {
-                return null;
-            });
-	    
-	    }
+//	    @PostMapping("/asignarVuelo/{idViaje}")
+//	    public Viaje asignarVuelo(@RequestBody Vuelo vuelo, @PathVariable Long idViaje) {
+//	        return repository.findById(idViaje)
+//            .map(viaje -> {
+//            	viaje.addVuelo(vuelo);
+//                return repository.save(viaje);
+//            })
+//            .orElseGet(() -> {
+//                return null;
+//            });
+//	    
+//	    }
 
 
 	    

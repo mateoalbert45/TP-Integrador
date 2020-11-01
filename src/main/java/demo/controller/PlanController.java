@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import demo.model.Plan;
+import demo.model.PlanVuelo;
 import demo.model.Viaje;
 import demo.repository.PlanRepository;
 import demo.repository.ViajeRepository;
@@ -39,6 +40,12 @@ public class PlanController {
     
     @PostMapping("/add")
     public Plan newPlan(@RequestBody Plan p) {
+        return repository.save(p);
+    }
+    
+    
+    @PostMapping("/addPlanVuelo")
+    public PlanVuelo newPlan(@RequestBody PlanVuelo p) {
         return repository.save(p);
     }
     

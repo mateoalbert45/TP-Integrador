@@ -40,10 +40,6 @@ public class Viaje {
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "idUsuario", referencedColumnName = "id")
 	private Usuario usuario;
-	@JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "idVuelo", referencedColumnName = "id")
-	private List<Vuelo> vuelos;
 	
 	public Viaje() {}
 
@@ -57,10 +53,6 @@ public class Viaje {
 		this.descripcion = descripcion;
 	}
 	
-	
-	public void addVuelo(Vuelo v) {
-		vuelos.add(v);
-	}
 
 
 	public void addPlan(ViajePlan vp) {
