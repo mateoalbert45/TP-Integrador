@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import demo.model.Plan;
+import demo.model.Usuario;
 import demo.model.Viaje;
 import demo.model.ViajePlan;
 import demo.model.ViajePlanPK;
@@ -55,6 +56,19 @@ public class ViajeController {
 	    @PostMapping("/add")
 	    public Viaje newViaje(@RequestBody Viaje v) {
 	        return repository.save(v);
+	    }
+	    
+	    @PostMapping("/asignarUsuario/{idViaje}/{idUsuario}")
+	    public Viaje asignarUsuario(@PathVariable Long idViaje,@PathVariable Long idUsuario) {
+	    	Usuario usuario = repository.getUsuario(idUsuario);
+	        return repository.findById(idViaje)
+          .map(viaje -> {
+          	viaje.setUsuario(usuario);
+              return repository.save(viaje);
+          })
+          .orElseGet(() -> {
+              return null;
+          });
 	    }
 
 		@DeleteMapping("/delete/{id}")

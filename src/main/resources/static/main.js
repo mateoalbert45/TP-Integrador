@@ -8,12 +8,14 @@ document.querySelector("#submitRegister").addEventListener("click", postUsuario)
 
 
 function postViaje(){ //Método para postear un viaje, agarramos los values de los inputs de la pagina, creamos un objeto con esos datos y lo subimos a la base
-
+	let idUsuario = document.querySelector("#idUsuario").value;
 	let id = document.querySelector("#idAddViaje").value;
 	let nombre = document.querySelector("#idAddNombre").value;
 	let fechaIni = document.querySelector("#idAddFechaInicio").value;
 	let fechaFin = document.querySelector("#idAddFechaFin").value;
 	let descripcion = document.querySelector("#idAddDescripcion").value;
+	let urlAddViaje = "viaje/add";
+	let urlAsignarUsuario = "viaje/asignarUsuario/" + id + "/" + idUsuario;
 
 	let viaje = {
 	      "id": id,
@@ -23,15 +25,23 @@ function postViaje(){ //Método para postear un viaje, agarramos los values de l
 			"descripcion": descripcion
 	 };
 	 console.log(viaje);
-	 let url = "viaje/add";
-	 fetch(url, {
-	     'method': 'POST',
-	      'headers': {
-	        'Content-Type': 'application/json',
-	        'Accept': 'application/json'
-	     },
-	     'body': JSON.stringify(viaje)
-	 })
+	 fetch(urlAddViaje, {
+			 'method': 'POST',
+				'headers': {
+					'Content-Type': 'application/json',
+					'Accept': 'application/json'
+			 },
+			 'body': JSON.stringify(viaje)
+	 }).then(function() {
+		 fetch(urlAsignarUsuario, {
+				 'method': 'POST',
+					'headers': {
+						'Content-Type': 'application/json',
+						'Accept': 'application/json'
+				 },
+		 })	   }, function() {
+		 // rechazo
+	 });
 }
 
 
@@ -91,7 +101,7 @@ function postViaje(){ //Método para postear un viaje, agarramos los values de l
 
 function postUsuario(){ //Método para postear un viaje, agarramos los values de los inputs de la pagina, creamos un objeto con esos datos y lo subimos a la base
 
-	let id = document.querySelector("#idUsuario").value;
+	let id = document.querySelector("#idUsuarioReg").value;
 	let nombre = document.querySelector("#idNombreReg").value;
 	let contraseña = document.querySelector("#idContraseñaReg").value;
 	let mail = document.querySelector("#idMailReg").value;
@@ -168,27 +178,6 @@ function asignarPlanVuelo(){ //Método para postear un viaje, agarramos los valu
 	 		 })	   }, function() {
 	 	   // rechazo
 	 	 });
-
-
-
-	 // fetch(urlAddPlan, {
-		// 	 'method': 'POST',
-		// 		'headers': {
-		// 			'Content-Type': 'application/json',
-		// 			'Accept': 'application/json'
-		// 	 },
-		// 	 'body': JSON.stringify(plan)
-	 // }).then(function() {
-		//  fetch(url, {
-		// 		 'method': 'POST',
-		// 			'headers': {
-		// 				'Content-Type': 'application/json',
-		// 				'Accept': 'application/json'
-		// 		 },
-		// 		 'body': JSON.stringify(plan)
-		//  })	   }, function() {
-		//  // rechazo
-	 // });
  }
 
 
@@ -219,7 +208,7 @@ let r = await fetch(url + mail + "/" + contraseña , {
 let json = await r.json();
 console.log(json);
 let contenedor = document.querySelector("#idUsuario");
-contenedor.innerHTML = JSON.stringify(json);
+contenedor.value = JSON.stringify(json);
 }
 
 
