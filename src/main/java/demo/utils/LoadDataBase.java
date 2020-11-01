@@ -40,12 +40,16 @@ class LoadDatabase {
 		    	Vuelo v1 = new Vuelo(Long.valueOf("1"), "c", "c", "c", "c", "c", Long.valueOf("1"), Long.valueOf("1"), "c");
 		    	Plan p1 = new PlanVuelo(Long.valueOf("1"), "a", v1);
 		    	Viaje v = new Viaje(Long.valueOf("1"), "viaje", "12/10/2025", "12/11/2025", "xd");
+		    	Viaje viaje1 = new Viaje(Long.valueOf("2"), "viaje", "12/10/2010", "12/11/2010", "xd");
+		    	
 		    	v.setUsuario(u1);
+		    	viaje1.setUsuario(u1);
 		    	
 
 	            log.info("Preloading " + repositoryUsuario.save(u1));
 	            log.info("Preloading " + repositoryViaje.save(v));
 	            log.info("Preloading " + repositoryPlan.save(p1));
+	            log.info("Preloading " + repositoryViaje.save(viaje1));
 //	            log.info("Preloading " + repositoryPlan.save(p1));
 
 		 	};
