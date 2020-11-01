@@ -15,6 +15,7 @@ import lombok.Data;
 
 @Entity
 public class PlanVuelo extends Plan{
+	@JsonIgnore
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "idVuelo", referencedColumnName = "id")
 	private Vuelo vuelo;

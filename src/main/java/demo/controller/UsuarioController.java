@@ -1,5 +1,12 @@
 package demo.controller;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -53,6 +60,24 @@ public class UsuarioController {
     public long getId(@PathVariable String mail,@PathVariable String contraseña) {
         return repository.getIdUsuario(mail,contraseña);
     }
+    
+	@GetMapping("/viajesPendientes")
+	public List<Viaje> viajesPendientes() throws ParseException {
+		List<Viaje> viajes = repository.getViajes(Long.valueOf("1"));
+		List<Viaje> viajesPendientes = new ArrayList<Viaje>();
+		if(viajes.size() != 0) {
+			for(Viaje v: viajes) {
+			    String fechaInicio= v.getFechaInicio();  
+			    java.util.Date fechaParseada =  new SimpleDateFormat("dd/MM/yyyy").parse(fechaInicio);  
+			    if(fechaParseada.after(new java.sql.Date(Calendar.getInstance().getTime().getTime()))) {
+			    	viajesPendientes.add(v);
+			    }
+			    	
+			    }
+			}
+		return viajesPendientes;
+
+		}
     
 	
 	
