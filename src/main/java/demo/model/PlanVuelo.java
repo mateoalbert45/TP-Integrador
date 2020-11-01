@@ -33,4 +33,9 @@ public class PlanVuelo extends Plan{
 		return vuelo;
 	}
 	
+
+	public void setVuelo(Vuelo v) {
+		this.vuelo = v;
+	}
+	
 }

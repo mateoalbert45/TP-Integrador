@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import demo.model.Plan;
 import demo.model.PlanVuelo;
 import demo.model.Viaje;
+import demo.model.Vuelo;
 import demo.repository.PlanRepository;
 import demo.repository.ViajeRepository;
 
@@ -44,8 +45,9 @@ public class PlanController {
     }
     
     
-    @PostMapping("/addPlanVuelo")
-    public PlanVuelo newPlan(@RequestBody PlanVuelo p) {
+    @PostMapping("/addPlanVuelo/{idPlan}/{descripcionPlan}")
+    public PlanVuelo newPlan(@RequestBody Vuelo v,@PathVariable long idPlan,@PathVariable String descripcionPlan) {
+    	PlanVuelo p = new PlanVuelo(idPlan, descripcionPlan,v);
     	System.out.println(p.getVuelo().getCompañia());
     	System.out.println(p.getVuelo().getAeropuertoLlegada());
         return repository.save(p);
