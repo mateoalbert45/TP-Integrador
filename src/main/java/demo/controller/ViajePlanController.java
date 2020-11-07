@@ -75,9 +75,9 @@ public class ViajePlanController {
 	    
 	    
 	    @GetMapping("/planSegunViaje/{idViaje}")
-	    public HttpResponseMessage planSegunViaje(@PathVariable Long idViaje) {
+	    public List<Plan> planSegunViaje(@PathVariable Long idViaje) {
 	    	System.out.println("ACA");
-	    	List<PlanVuelo> planes = new ArrayList<>();
+	    	List<Plan> planes = new ArrayList<>();
 	    	for(PlanVuelo p: repository.planSegunViaje(idViaje)) {
 		    	System.out.println("ACA");
 	    		planes.add(p);

@@ -76,6 +76,11 @@ public class ViajeController {
 		        repository.deleteById(id);
 		    }
 		
+	    @GetMapping("/usuarioMasViajes")
+	    public Usuario usuarioMasViajes() {
+	        return repository.getViajes().get(0);
+	    }
+		
 		
 //	    @PostMapping("/asignarVuelo/{idViaje}")
 //	    public Viaje asignarVuelo(@RequestBody Vuelo vuelo, @PathVariable Long idViaje) {

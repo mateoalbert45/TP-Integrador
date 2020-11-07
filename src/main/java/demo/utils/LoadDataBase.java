@@ -47,21 +47,20 @@ class LoadDatabase {
 			 	LocalDate fecha2 = LocalDate.of(2025, 5, 12);
 			 	LocalDate fecha3 = LocalDate.of(2025, 10, 12);
 			 	LocalDate fecha4 = LocalDate.of(2025, 10, 13);
-			 	
-		    	Usuario u1 = new Usuario(Long.valueOf("1"), "a","a", "a");
-//		    	Vuelo v1 = new Vuelo(Long.valueOf("1"), "c", "c", "c", "c", "c", Long.valueOf("1"), Long.valueOf("1"), "c");
-//		    	Plan p1 = new PlanVuelo(Long.valueOf("1"), "a", v1);
-		    	Viaje vi = new Viaje(Long.valueOf("1"), "viaje", fecha1, fecha2, "xd");
-		    	Viaje vi2 = new Viaje(Long.valueOf("2"), "viaje", fecha3, fecha4, "xd");
+			
+		    	Usuario u1 = new Usuario(Long.valueOf("1"), "usuario","masviajes", "a");
+		    	Usuario u2 = new Usuario(Long.valueOf("2"), "usuario","menosviajes", "a");
+
+		    	Vuelo v1 = new Vuelo(Long.valueOf("1"), "c", "c", "c", "c", "c", Long.valueOf("1"), Long.valueOf("1"), "c");
+		    	Plan p1 = new PlanVuelo(Long.valueOf("1"), "a", v1);
+		    	Viaje v = new Viaje(Long.valueOf("1"), "asd", "chile-argentina-porongol", fecha1, fecha2, "xd");
+		    	Viaje viaje1 = new Viaje(Long.valueOf("2"), "viaje", "chile-argentina-porongol", fecha3, fecha4, "xd");
+		    	Viaje viaje2 = new Viaje(Long.valueOf("3"), "viaje", "chile-argentina-porongol", fecha3, fecha4, "xd");
+
 		    	
-		    	vi.setUsuario(u1);
-		    	vi2.setUsuario(u1);
-//		    	ViajePlanPK pk = new ViajePlanPK(Long.valueOf("1"), Long.valueOf("1"));
-//				ViajePlan vp = new ViajePlan(pk, vi , p1);
-
-
-	            log.info("Preloading " + repositoryUsuario.save(u1));
-	            log.info("Preloading " + repositoryViaje.save(vi));
+		    	v.setUsuario(u2);
+		    	viaje1.setUsuario(u1);
+		    	viaje2.setUsuario(u1);
 //	            log.info("Preloading " + repositoryPlan.save(p1));
 //	            log.info("Preloading " + repositoryViaje.save(vi2));
 //	            log.info("Preloading " + repositoryViajePlan.save(vp));
