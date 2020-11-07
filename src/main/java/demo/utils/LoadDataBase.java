@@ -7,7 +7,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.transaction.Transactional;
 
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +28,7 @@ import demo.repository.ViajePlanRepository;
 import demo.repository.ViajeRepository;
 import demo.repository.VueloRepository;
 
-
+@Transactional
 @Configuration
 @Slf4j
 class LoadDatabase {
@@ -41,31 +43,33 @@ class LoadDatabase {
     		@Qualifier("viajeRepository") ViajeRepository repositoryViaje,
     		@Qualifier("viajePlanRepository") ViajePlanRepository repositoryViajePlan) {
 		 return args -> {
-			 	
 			 	LocalDate fecha1 = LocalDate.of(2025, 4, 12);
 			 	LocalDate fecha2 = LocalDate.of(2025, 5, 12);
 			 	LocalDate fecha3 = LocalDate.of(2025, 10, 12);
 			 	LocalDate fecha4 = LocalDate.of(2025, 10, 13);
 			 	
 		    	Usuario u1 = new Usuario(Long.valueOf("1"), "a","a", "a");
-		    	Vuelo v1 = new Vuelo(Long.valueOf("1"), "c", "c", "c", "c", "c", Long.valueOf("1"), Long.valueOf("1"), "c");
-		    	Plan p1 = new PlanVuelo(Long.valueOf("1"), "a", v1);
-		    	Viaje v = new Viaje(Long.valueOf("1"), "viaje", fecha1, fecha2, "xd");
-		    	Viaje viaje1 = new Viaje(Long.valueOf("2"), "viaje", fecha3, fecha4, "xd");
+//		    	Vuelo v1 = new Vuelo(Long.valueOf("1"), "c", "c", "c", "c", "c", Long.valueOf("1"), Long.valueOf("1"), "c");
+//		    	Plan p1 = new PlanVuelo(Long.valueOf("1"), "a", v1);
+		    	Viaje vi = new Viaje(Long.valueOf("1"), "viaje", fecha1, fecha2, "xd");
+		    	Viaje vi2 = new Viaje(Long.valueOf("2"), "viaje", fecha3, fecha4, "xd");
 		    	
-		    	v.setUsuario(u1);
-		    	viaje1.setUsuario(u1);
-		    	
+		    	vi.setUsuario(u1);
+		    	vi2.setUsuario(u1);
+//		    	ViajePlanPK pk = new ViajePlanPK(Long.valueOf("1"), Long.valueOf("1"));
+//				ViajePlan vp = new ViajePlan(pk, vi , p1);
+
 
 	            log.info("Preloading " + repositoryUsuario.save(u1));
-	            log.info("Preloading " + repositoryViaje.save(v));
-	            log.info("Preloading " + repositoryPlan.save(p1));
-	            log.info("Preloading " + repositoryViaje.save(viaje1));
+	            log.info("Preloading " + repositoryViaje.save(vi));
 //	            log.info("Preloading " + repositoryPlan.save(p1));
+//	            log.info("Preloading " + repositoryViaje.save(vi2));
+//	            log.info("Preloading " + repositoryViajePlan.save(vp));
 
-
+//	            log.info("Preloading " + repositoryPlan.save(p1));
 		 	};
 			}
+	
 	}
             
         

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import demo.model.Plan;
+import demo.model.PlanVuelo;
 import demo.model.Viaje;
 import demo.model.ViajePlan;
 import demo.model.ViajePlanPK;
@@ -73,16 +74,30 @@ public class ViajePlanController {
 	    }
 	    
 	    
-		
 	    @GetMapping("/planSegunViaje/{idViaje}")
-	    public Iterable<Plan> planSegunViaje(@PathVariable Long idViaje) {
+	    public HttpResponseMessage planSegunViaje(@PathVariable Long idViaje) {
 	    	System.out.println("ACA");
-	    	List<Plan> planes = repository.planSegunViaje(idViaje);
-//	    	for(Plan p: planes) {
-//	    		System.out.println(p);
-//	    	}
-	        return repository.planSegunViaje(idViaje);
+	    	List<PlanVuelo> planes = new ArrayList<>();
+	    	for(PlanVuelo p: repository.planSegunViaje(idViaje)) {
+		    	System.out.println("ACA");
+	    		planes.add(p);
+		    	System.out.println(p.toString());
+		    		
+	    	}
+	        return planes;
 	    }
+	    
+//	    @GetMapping("/planSegunViaje/{idViaje}")
+//	    public List<Plan> planSegunViaje(@PathVariable Long idViaje) {
+//	    	System.out.println("ACA");
+//	    	List<Plan> planes = new ArrayList<Plan>();
+//	    	for(Plan p: repository.planSegunViaje(idViaje)) {
+//		    	System.out.println("ACA");
+//	    		planes.add(p);
+//		    	System.out.println(p.toString());
+//	    	}
+//	        return planes;
+//	    }
 	    
 
 

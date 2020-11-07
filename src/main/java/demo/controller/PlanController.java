@@ -1,5 +1,8 @@
 package demo.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -46,11 +49,15 @@ public class PlanController {
     
     
     @PostMapping("/addPlanVuelo/{idPlan}/{descripcionPlan}")
-    public PlanVuelo newPlan(@RequestBody Vuelo v,@PathVariable long idPlan,@PathVariable String descripcionPlan) {
+    public PlanVuelo addPlanVuelo(@RequestBody Vuelo v,@PathVariable long idPlan,@PathVariable String descripcionPlan) {
     	PlanVuelo p = new PlanVuelo(idPlan, descripcionPlan,v);
     	System.out.println(p.getVuelo().getCompañia());
     	System.out.println(p.getVuelo().getAeropuertoLlegada());
-        return repository.save(p);
+        repository.save(p);
+        List<PlanVuelo> plan= repository.getPlanesVuelo();
+        System.out.println("Aca abajo");
+        System.out.println(plan.get(0).getVuelo().getId());
+        return p;
     }
     
 	@DeleteMapping("/delete/{id}")

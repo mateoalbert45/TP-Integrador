@@ -41,4 +41,19 @@ public class PlanVuelo extends Plan{
 		this.vuelo = v;
 	}
 	
+	
+	public Plan deolver() {
+		return this;
+	}
+
+	@Override
+	public String toString() {
+		return "PlanVuelo [vuelo=" + vuelo + ", prueba=" + prueba + "]";
+	}
+	
+	
+	
+	
+	
+	
 }

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import demo.model.Plan;
+import demo.model.PlanVuelo;
 import demo.model.Usuario;
 import demo.model.Viaje;
 import demo.model.ViajePlan;
@@ -20,6 +21,6 @@ public interface ViajePlanRepository extends JpaRepository<ViajePlan, Long> {
 	    public Plan getPlan(long idPlan);
 	   
 	   @Query("select p FROM ViajePlan vp join vp.viaje v join vp.plan p where v.id=:idViaje")
-	    public List<Plan> planSegunViaje(long idViaje);
+	    public List<PlanVuelo> planSegunViaje(long idViaje);
 	   
 }

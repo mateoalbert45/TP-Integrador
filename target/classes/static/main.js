@@ -251,6 +251,7 @@ function asignarPlan(){
 	   // rechazo
 	 });
  }
+
 	 async function getReporteViajesPorRealizar(){
 		 let idUsuario = document.querySelector("#idUsuarioPorRealizar").value;
 		 let  url = "usuario/viajesPendientes/" +idUsuario;
@@ -263,6 +264,7 @@ function asignarPlan(){
 	 let contenedor = document.querySelector("#contenedorViajeRealizar");
 	 contenedor.innerHTML = JSON.stringify(json);
 	 }
+
 	 async function getReporteViajesFinalizados(){
 		 let idUsuario = document.querySelector("#idUsuarioFinalizados").value;
 		 let  url = "usuario/viajesFinalizados/" +idUsuario;
@@ -275,8 +277,6 @@ function asignarPlan(){
 	 let contenedor = document.querySelector("#contenedorViajeFinalizado");
 	 contenedor.innerHTML = JSON.stringify(json);
 	 }
-
-
 
 
 
