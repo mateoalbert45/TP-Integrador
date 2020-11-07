@@ -77,7 +77,7 @@ public class ViajeController {
 		    }
 		
 	    @GetMapping("/usuarioMasViajes")
-	    public Usuario porongol() {
+	    public Usuario usuarioMasViajes() {
 	        return repository.getViajes().get(0);
 	    }
 		
