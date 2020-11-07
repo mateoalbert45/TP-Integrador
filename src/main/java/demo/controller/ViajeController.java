@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -78,7 +79,12 @@ public class ViajeController {
 		
 	    @GetMapping("/usuarioMasViajes")
 	    public Usuario usuarioMasViajes() {
-	        return repository.getViajes().get(0);
+	        return repository.getUsuarioMasViajes().get(0);
+	    }
+	    
+	    @GetMapping("/masViajesPorZona")
+	    public Object masViajesPorZona() {
+	        return JSONObject.quote(repository.getViajesPorZona().get(0));
 	    }
 		
 		
