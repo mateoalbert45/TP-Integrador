@@ -75,6 +75,7 @@ class LoadDatabase {
 		    	
 		    	
 		    	log.info("Preloading " + repositoryUsuario.save(u1));
+		    	 log.info("Preloading " + repositoryVuelo.save(vu1));
 	            log.info("Preloading " + repositoryPlan.save(p1));
 	            log.info("Preloading " + repositoryViaje.save(viaje1));
 	            log.info("Preloading " + repositoryViaje.save(viaje2));

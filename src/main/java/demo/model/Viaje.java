@@ -1,6 +1,7 @@
 package demo.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -32,7 +33,7 @@ public class Viaje {
 	@ElementCollection
 	@CollectionTable(name="destinos", joinColumns=@JoinColumn(name="destino_id"))
 	@Column(name="destinos")
-	private List<String> destinos;
+	private List<String> destinos = new ArrayList<String>();;
 	@Column
 	private LocalDate fechaInicio;
 	@Column
