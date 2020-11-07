@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -75,16 +76,16 @@ public class ViajePlanController {
 	    
 	    
 	    @GetMapping("/planSegunViaje/{idViaje}")
-	    public List<Plan> planSegunViaje(@PathVariable Long idViaje) {
+	    public Object planSegunViaje(@PathVariable Long idViaje) {
 	    	System.out.println("ACA");
-	    	List<Plan> planes = new ArrayList<>();
+	    	String planes = "";
 	    	for(PlanVuelo p: repository.planSegunViaje(idViaje)) {
 		    	System.out.println("ACA");
-	    		planes.add(p);
 		    	System.out.println(p.toString());
-		    		
+		    	planes += p.toString() + "  ";
 	    	}
-	        return planes;
+	        return JSONObject.quote(planes);
+
 	    }
 	    
 //	    @GetMapping("/planSegunViaje/{idViaje}")

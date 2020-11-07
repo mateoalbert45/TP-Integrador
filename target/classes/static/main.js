@@ -11,6 +11,8 @@ document.querySelector("#submitFinalizados").addEventListener("click", getReport
 document.querySelector("#submitRango").addEventListener("click", getReporteViajesRango);
 document.querySelector("#submitZona").addEventListener("click", getViajesZona);
 document.querySelector("#submitGetUsuarioMasViajes").addEventListener("click", getUsuarioMasViajes);
+document.querySelector("#submitGetZona").addEventListener("click", getViajesZona);
+
 
 
 
@@ -337,5 +339,17 @@ async function planesSegunViaje(){
 		let json = await r.json();
 		console.log(json);
 		let contenedor = document.querySelector("#contenedorViajesUsuario");
+		contenedor.innerHTML = JSON.stringify(json);
+		}
+
+		async function getViajesZona(){
+		  let  url = "viaje/masViajesPorZona";
+		let r = await fetch(url, {
+		     'method': 'GET',
+		      'mode':'cors'
+		 });
+		let json = await r.json();
+		console.log(json);
+		let contenedor = document.querySelector("#contenedorViajesZona");
 		contenedor.innerHTML = JSON.stringify(json);
 		}

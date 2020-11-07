@@ -15,6 +15,8 @@ public interface ViajeRepository extends JpaRepository<Viaje, Long>{
 	   @Query("select u FROM Usuario u where id=:idUsuario")
 	    public Usuario getUsuario(long idUsuario);
 	   @Query("select v.usuario from Viaje v join v.usuario u group by v.usuario order by count(v) DESC")
-	    public List<Usuario> getViajes();
+	    public List<Usuario> getUsuarioMasViajes();
+	   @Query("select v.destinos from Viaje v group by v.destinos order by count(v) DESC")
+	    public List<String> getViajesPorZona();
 	   
 }

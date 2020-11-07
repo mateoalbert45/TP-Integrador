@@ -18,7 +18,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Plan {
+public class  Plan {
 	@Id
 	private Long id;
 	@Column

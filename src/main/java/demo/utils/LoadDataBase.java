@@ -51,21 +51,40 @@ class LoadDatabase {
 		    	Usuario u1 = new Usuario(Long.valueOf("1"), "usuario","masviajes", "a");
 		    	Usuario u2 = new Usuario(Long.valueOf("2"), "usuario","menosviajes", "a");
 
-		    	Vuelo v1 = new Vuelo(Long.valueOf("1"), "c", "c", "c", "c", "c", Long.valueOf("1"), Long.valueOf("1"), "c");
-		    	Plan p1 = new PlanVuelo(Long.valueOf("1"), "a", v1);
-		    	Viaje v = new Viaje(Long.valueOf("1"), "asd", "chile-argentina-porongol", fecha1, fecha2, "xd");
-		    	Viaje viaje1 = new Viaje(Long.valueOf("2"), "viaje", "chile-argentina-porongol", fecha3, fecha4, "xd");
-		    	Viaje viaje2 = new Viaje(Long.valueOf("3"), "viaje", "chile-argentina-porongol", fecha3, fecha4, "xd");
+		    	Vuelo vu1 = new Vuelo(Long.valueOf("1"), "c", "c", "c", "c", "c", Long.valueOf("1"), Long.valueOf("1"), "c");
+		    	
+		    	Plan p1 = new PlanVuelo(Long.valueOf("1"), "a", vu1);
+		    	
+		    	Viaje viaje1 = new Viaje(Long.valueOf("1"), "asd", fecha1, fecha2, "xd");
+		    	viaje1.addDestino("arg");
+
+		    	Viaje viaje2 = new Viaje(Long.valueOf("2"), "viaje", fecha3, fecha4, "xd");
+		    	viaje2.addDestino("arg");
+
+		    	Viaje viaje3 = new Viaje(Long.valueOf("3"), "viaje", fecha3, fecha4, "xd");
+		    	viaje3.addDestino("chi");
+
 
 		    	
-		    	v.setUsuario(u2);
 		    	viaje1.setUsuario(u1);
 		    	viaje2.setUsuario(u1);
-//	            log.info("Preloading " + repositoryPlan.save(p1));
-//	            log.info("Preloading " + repositoryViaje.save(vi2));
-//	            log.info("Preloading " + repositoryViajePlan.save(vp));
 
-//	            log.info("Preloading " + repositoryPlan.save(p1));
+//				ViajePlanPK pk = new ViajePlanPK(Long.valueOf("1"), Long.valueOf("1"));
+//				ViajePlan vp = new ViajePlan(pk, viaje1 , p1);
+		    	
+		    	
+		    	
+		    	log.info("Preloading " + repositoryUsuario.save(u1));
+	            log.info("Preloading " + repositoryPlan.save(p1));
+	            log.info("Preloading " + repositoryViaje.save(viaje1));
+	            log.info("Preloading " + repositoryViaje.save(viaje2));
+	            log.info("Preloading " + repositoryViaje.save(viaje3));
+
+	           // log.info("Preloading " + repositoryViajePlan.save(vp));
+
+	            
+	            
+	            //
 		 	};
 			}
 	

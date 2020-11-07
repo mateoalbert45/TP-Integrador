@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -27,8 +29,10 @@ public class Viaje {
 	private Long id;
 	@Column
 	private String nombre;
-	@Column
-	private String destinos;
+	@ElementCollection
+	@CollectionTable(name="destinos", joinColumns=@JoinColumn(name="destino_id"))
+	@Column(name="destinos")
+	private List<String> destinos;
 	@Column
 	private LocalDate fechaInicio;
 	@Column
@@ -47,14 +51,19 @@ public class Viaje {
 	public Viaje() {}
 
 	
-	public Viaje(Long id, String nombre, String destino,  LocalDate fechaInicio, LocalDate fechaFin, String descripcion) {
+	public Viaje(Long id, String nombre,  LocalDate fechaInicio, LocalDate fechaFin, String descripcion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.destinos = destino;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.descripcion = descripcion;
+	}
+	
+	
+	
+	public void addDestino(String d) {
+		destinos.add(d);
 	}
 	
 
