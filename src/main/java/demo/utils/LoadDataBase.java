@@ -57,12 +57,15 @@ class LoadDatabase {
 		    	
 		    	Viaje viaje1 = new Viaje(Long.valueOf("1"), "asd", fecha1, fecha2, "xd");
 		    	viaje1.addDestino("arg");
+		    	viaje1.addDestino("chi");
 
 		    	Viaje viaje2 = new Viaje(Long.valueOf("2"), "viaje", fecha3, fecha4, "xd");
 		    	viaje2.addDestino("arg");
+		    	viaje2.addDestino("chi");
 
 		    	Viaje viaje3 = new Viaje(Long.valueOf("3"), "viaje", fecha3, fecha4, "xd");
 		    	viaje3.addDestino("chi");
+		    	viaje3.addDestino("uru");
 
 
 		    	
@@ -75,11 +78,11 @@ class LoadDatabase {
 		    	
 		    	
 		    	log.info("Preloading " + repositoryUsuario.save(u1));
-		    	 log.info("Preloading " + repositoryVuelo.save(vu1));
-	            log.info("Preloading " + repositoryPlan.save(p1));
+//		    	 log.info("Preloading " + repositoryVuelo.save(vu1));
+//	            log.info("Preloading " + repositoryPlan.save(p1));
 	            log.info("Preloading " + repositoryViaje.save(viaje1));
-	            log.info("Preloading " + repositoryViaje.save(viaje2));
-	            log.info("Preloading " + repositoryViaje.save(viaje3));
+//	            log.info("Preloading " + repositoryViaje.save(viaje2));
+//	            log.info("Preloading " + repositoryViaje.save(viaje3));
 
 	           // log.info("Preloading " + repositoryViajePlan.save(vp));
 
