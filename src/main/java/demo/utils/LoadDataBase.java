@@ -47,20 +47,27 @@ class LoadDatabase {
 			 	LocalDate fecha3 = LocalDate.of(2025, 10, 12);
 			 	LocalDate fecha4 = LocalDate.of(2025, 10, 13);
 			 	
-		    	Usuario u1 = new Usuario(Long.valueOf("1"), "a","a", "a");
+		    	Usuario u1 = new Usuario(Long.valueOf("1"), "usuario","masviajes", "a");
+		    	Usuario u2 = new Usuario(Long.valueOf("2"), "usuario","menosviajes", "a");
+
 		    	Vuelo v1 = new Vuelo(Long.valueOf("1"), "c", "c", "c", "c", "c", Long.valueOf("1"), Long.valueOf("1"), "c");
 		    	Plan p1 = new PlanVuelo(Long.valueOf("1"), "a", v1);
 		    	Viaje v = new Viaje(Long.valueOf("1"), "asd", "chile-argentina-porongol", fecha1, fecha2, "xd");
 		    	Viaje viaje1 = new Viaje(Long.valueOf("2"), "viaje", "chile-argentina-porongol", fecha3, fecha4, "xd");
+		    	Viaje viaje2 = new Viaje(Long.valueOf("3"), "viaje", "chile-argentina-porongol", fecha3, fecha4, "xd");
+
 		    	
-		    	v.setUsuario(u1);
+		    	v.setUsuario(u2);
 		    	viaje1.setUsuario(u1);
+		    	viaje2.setUsuario(u1);
 		    	
 
 	            log.info("Preloading " + repositoryUsuario.save(u1));
 	            log.info("Preloading " + repositoryViaje.save(v));
 	            log.info("Preloading " + repositoryPlan.save(p1));
 	            log.info("Preloading " + repositoryViaje.save(viaje1));
+	            log.info("Preloading " + repositoryViaje.save(viaje2));
+
 //	            log.info("Preloading " + repositoryPlan.save(p1));
 
 
