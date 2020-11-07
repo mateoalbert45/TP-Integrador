@@ -9,6 +9,9 @@ document.querySelector("#submitPlanesSegunViaje").addEventListener("click", plan
 document.querySelector("#submitPorRealizar").addEventListener("click", getReporteViajesPorRealizar);
 document.querySelector("#submitFinalizados").addEventListener("click", getReporteViajesFinalizados);
 document.querySelector("#submitRango").addEventListener("click", getReporteViajesRango);
+document.querySelector("#submitZona").addEventListener("click", getViajesZona);
+
+
 
 
 
@@ -308,3 +311,19 @@ async function planesSegunViaje(){
 	 let contenedor = document.querySelector("#contenedorViajeRango");
 	 contenedor.innerHTML = JSON.stringify(json);
 	 }
+	 async function getViajesZona(){
+	 	let idUsuario = document.querySelector("#idUsuarioZona").value;
+		let zona = document.querySelector("#idZona").value;
+
+
+	 	let url = "usuario/viajesPorZona/" + idUsuario + "/" +zona;
+
+	 	let r = await fetch(url , {
+	 			 'method': 'GET',
+	 				'mode':'cors'
+	 	 });
+	 	let json = await r.json();
+	 	console.log(json);
+	 	let contenedor = document.querySelector("#contenedorZona");
+	 	contenedor.innerHTML = JSON.stringify(json);
+	  }

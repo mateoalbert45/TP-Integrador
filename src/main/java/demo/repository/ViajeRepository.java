@@ -14,4 +14,5 @@ public interface ViajeRepository extends JpaRepository<Viaje, Long>{
 
 	   @Query("select u FROM Usuario u where id=:idUsuario")
 	    public Usuario getUsuario(long idUsuario);
+	   
 }

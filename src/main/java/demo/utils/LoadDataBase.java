@@ -50,8 +50,8 @@ class LoadDatabase {
 		    	Usuario u1 = new Usuario(Long.valueOf("1"), "a","a", "a");
 		    	Vuelo v1 = new Vuelo(Long.valueOf("1"), "c", "c", "c", "c", "c", Long.valueOf("1"), Long.valueOf("1"), "c");
 		    	Plan p1 = new PlanVuelo(Long.valueOf("1"), "a", v1);
-		    	Viaje v = new Viaje(Long.valueOf("1"), "viaje", fecha1, fecha2, "xd");
-		    	Viaje viaje1 = new Viaje(Long.valueOf("2"), "viaje", fecha3, fecha4, "xd");
+		    	Viaje v = new Viaje(Long.valueOf("1"), "asd", "chile-argentina-porongol", fecha1, fecha2, "xd");
+		    	Viaje viaje1 = new Viaje(Long.valueOf("2"), "viaje", "chile-argentina-porongol", fecha3, fecha4, "xd");
 		    	
 		    	v.setUsuario(u1);
 		    	viaje1.setUsuario(u1);

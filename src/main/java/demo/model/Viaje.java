@@ -46,10 +46,11 @@ public class Viaje {
 	public Viaje() {}
 
 	
-	public Viaje(Long id, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String descripcion) {
+	public Viaje(Long id, String nombre, String destino,  LocalDate fechaInicio, LocalDate fechaFin, String descripcion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
+		this.destinos = destino;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.descripcion = descripcion;
