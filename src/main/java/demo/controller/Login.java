@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import demo.model.UserLogin;
 import demo.model.Usuario;
 import demo.repository.UsuarioRepository;
 import io.jsonwebtoken.Jwts;
@@ -21,7 +23,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @RestController
 public class Login {
 	@Qualifier("UsuarioRepository")
-	@Autowired
 	private final UsuarioRepository repository;
 	// Servicio de login
 
@@ -29,16 +30,18 @@ public class Login {
 		this.repository = repository;
 	}
 
-	@PostMapping("/user")
-	public String login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
+	@GetMapping("/user")
+	public UserLogin login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
 		// En el caso normal debería chequear que el usuario exista.
-		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		UserLogin userLogin = new UserLogin();
 		Usuario usuario = repository.getUsuario(username, pwd);
 		System.out.println(usuario);
 		if (usuario != null) {
-			System.out.println("entro al if");
 			String token = getJWTToken(username, pwd.equals("link"));
-			return token;
+			userLogin.setId(usuario.getId());
+			userLogin.setUsername(username);;
+			userLogin.setToken(token);
+			return userLogin;
 		}
 		return null;
 	}

@@ -21,8 +21,9 @@ public class LoginConfiguration extends WebSecurityConfigurerAdapter {
 			.addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 			.authorizeRequests()
 			.antMatchers(HttpMethod.GET, "/greetings").permitAll()
-			.antMatchers(HttpMethod.POST, "/user").permitAll()
+			.antMatchers(HttpMethod.GET, "/user").permitAll()
 			.antMatchers(HttpMethod.GET, "/").permitAll()
+			.antMatchers(HttpMethod.GET, "/viaje/getAll").permitAll()
 			.antMatchers(HttpMethod.GET, "/main.js").permitAll()
 			//.antMatchers(HttpMethod.GET, "/oldman").hasAuthority("LINK") // Esta línea es otra manera de agregar requerimientos de logeo.
 			.anyRequest().authenticated();

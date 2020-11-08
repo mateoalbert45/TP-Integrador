@@ -2,7 +2,7 @@
 document.querySelector("#submitPostViaje").addEventListener("click", postViaje);
 document.querySelector("#submitApvVuelo").addEventListener("click", asignarPlanVuelo);
 document.querySelector("#submitGetVuelos").addEventListener("click", getVuelos);
-document.querySelector("#submitLogin").addEventListener("click", getIdUsuario);
+document.querySelector("#submitLogin").addEventListener("click", login);
 document.querySelector("#submitAsignarPlan").addEventListener("click", asignarPlan);
 document.querySelector("#submitRegister").addEventListener("click", postUsuario);
 document.querySelector("#submitPlanesSegunViaje").addEventListener("click", planesSegunViaje);
@@ -13,7 +13,7 @@ document.querySelector("#submitZona").addEventListener("click", getViajesZona);
 document.querySelector("#submitGetUsuarioMasViajes").addEventListener("click", getUsuarioMasViajes);
 document.querySelector("#submitGetZona").addEventListener("click", getViajesZona);
 document.querySelector("#submitAphHotel").addEventListener("click", asignarPlanHotel);
-
+let token = " ";
 
 
 
@@ -41,11 +41,13 @@ function postViaje(){ //Método para postear un viaje, agarramos los values de l
 			"descripcion": descripcion
 	 };
 	 console.log(viaje);
+	 console.log(token);
 	 fetch(urlAddViaje, {
 			 'method': 'POST',
 				'headers': {
 					'Content-Type': 'application/json',
-					'Accept': 'application/json'
+					'Accept': 'application/json',
+					'Authorization': token
 			 },
 			 'body': JSON.stringify(viaje)
 	 }).then(function() {
@@ -53,7 +55,8 @@ function postViaje(){ //Método para postear un viaje, agarramos los values de l
 				 'method': 'POST',
 					'headers': {
 						'Content-Type': 'application/json',
-						'Accept': 'application/json'
+						'Accept': 'application/json',
+						'Authorization': token
 				 },
 		 })	   }, function() {
 		 // rechazo
@@ -258,18 +261,20 @@ contenedor.innerHTML = JSON.stringify(json);
 
 
 
-async function getIdUsuario(){
-	let mail = document.querySelector("#idMail").value;
+async function login(){
+	let nombre = document.querySelector("#idNombre").value;
 	let contraseña = document.querySelector("#idContraseña").value;
-  let url = "usuario/getId/";
-let r = await fetch(url + mail + "/" + contraseña , {
+  let url = "user" + "?user=" + nombre + "&password=" + contraseña ;
+let r = await fetch(url , {
      'method': 'GET',
       'mode':'cors'
  });
 let json = await r.json();
 console.log(json);
+//json['id'][1]['powers'][2]
 let contenedor = document.querySelector("#idUsuario");
-contenedor.value = JSON.stringify(json);
+contenedor.value = JSON.stringify(json["id"]);
+token = json["token"];
 }
 
 
