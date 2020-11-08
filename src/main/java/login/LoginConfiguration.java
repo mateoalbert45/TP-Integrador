@@ -21,7 +21,7 @@ public class LoginConfiguration extends WebSecurityConfigurerAdapter {
 			.addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 			.authorizeRequests()
 			.antMatchers(HttpMethod.POST, "/user").permitAll()
-			.antMatchers(HttpMethod.POST, "/getAll").permitAll()
+			.antMatchers(HttpMethod.GET, "/viaje/getAll").permitAll()
 			.anyRequest().authenticated();
 	}
 }
