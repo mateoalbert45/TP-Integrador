@@ -37,8 +37,4 @@ public class Usuario {
 		this.contraseña = contraseña;
 		this.mail = mail;
 	}
-
-	
-	
-
 }

@@ -300,6 +300,8 @@ async function planesSegunViaje(){
 	let contenedor = document.querySelector("#contenedorPlanSegunViaje");
 	contenedor.innerHTML = JSON.stringify(json);
  }
+
+ 
 	 async function getReporteViajesRango(){
 		 let idUsuario = document.querySelector("#idUsuarioRango").value;
 		 let fecha1 = document.querySelector("#idFecha1Rango").value;

@@ -26,7 +26,7 @@ import demo.repository.UsuarioRepository;
 import demo.repository.ViajeRepository;
 
 @RestController
-@RequestMapping("usuario")
+	
 /**
  * Esta clase administra los servicios rest de los clientes.
  * 
