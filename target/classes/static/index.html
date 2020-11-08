@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>integrador 4- grupo 4</title>
+</head>
+<body style="background-color:black; color: white" >
+  <h1>Trabajo Final Integrador - grupo 4</h1>
+  <h1 style="color:red">Usuario</h1>
+  <div>
+    <p>Cada usuario deberá poder registrarse en la aplicación,</p>
+    <h1>Registrarse</h1>
+    <input type="text" placeholder="id" id="idUsuarioReg"style= "display:list-item">
+    <input type="text" placeholder="Contraseña" id="idContraseñaReg"style= "display:list-item">
+    <input type="text" placeholder="Mail del usuario" id="idMailReg"style= "display:list-item">
+    <input type="text" placeholder="Nombre" id="idNombreReg"style= "display:list-item">
+    <button type="button" id="submitRegister" >Aceptar</button>
+  </div>
+    <div>
+      <p>y luego acceder mediante un nombre y contraseña.</p>
+      <h1>Login</h1>
+      <input type="text" placeholder="Nombre del usuario" id="idNombre"style= "display:list-item">
+      <input type="text" placeholder="Contraseña" id="idContraseña"style= "display:list-item">
+      <button type="button" id="submitLogin" >Aceptar</button>
+      <input id="idUsuario" style="display:none"></input>
+    </div>
+  <h1 style="color:red">Viaje</h1>
+  <div>
+    <p>Para dar de alta un viaje, existirán dos alternativas: i) mediante un formulario provisto en la aplicación;</p>
+    <h1>Crear Viaje</h1>
+    <input type="number" placeholder="Id viaje" id="idAddViaje"style= "display:list-item">
+    <input type="text" placeholder="Nombre" id="idAddNombre"style= "display:list-item">
+    <input type="text" placeholder="Fecha Inicio" id="idAddFechaInicio"style= "display:list-item">
+    <input type="text" placeholder="Fecha Fin" id="idAddFechaFin"style= "display:list-item">
+    <input type="text" placeholder="Descripcion" id="idAddDescripcion"style= "display:list-item">
+    <button type="button" id="submitPostViaje" >Aceptar</button>
+  </div>
+  <div>
+    <p>ii) enviando un archivo de texto, que contenga toda la confirmación de la reserva. En este caso, el sistema debe extraer los datos del archivo y cargarlos.</p>
+    <h1>Cargar desde archivo</h1>
+    <input type='file' accept='text/plain' onchange='openFile(event)'>
+</div>
+  <div>
+    <p>Para un vuelo que ha sido cargado, la aplicación deberá mostrar número de vuelo, compañía, fecha y mas cosas</p>
+    <h1>Get Vuelos</h1>
+    <button type="button" id="submitGetVuelos" >Aceptar</button>
+    <div id="contenedorVuelo">
+    </div>
+  </div>
+  <div>
+    <h1>Asignar plan a un vuelo</h1>
+    <input type="number" placeholder="id Viaje" id="idAsignarPlanViaje"style= "display:list-item">
+    <input type="number" placeholder="id Plan" id="idAsignarPlan"style= "display:list-item">
+    <input type="text" placeholder="descripcion plan" id="idAsignarDescripcion"style= "display:list-item">
+    <button type="button" id="submitAsignarPlan" >Aceptar</button>
+  </div>
+  <div>
+    <h1>Asignar Plan vuelo a un viaje</h1>
+    <!-- Apv: Asignar plan vuelo -->
+    <input type="number" placeholder="Id Viaje" id="idApvViaje"style= "display:list-item">
+    <input type="number" placeholder="Id Plan" id="idApvPlan"style= "display:list-item">
+    <input type="text" placeholder="Descripcion plan" id="idApvDescripcion"style= "display:list-item" value="">
+    <input type="number" placeholder="Id Vuelo" id="idApvVuelo"style= "display:list-item">
+    <input type="text" placeholder="Compañia" id="idApvCompañia"style= "display:list-item">
+    <input type="datetime" placeholder="Fecha salida" id="idApvFechaSalida"style= "display:list-item">
+    <input type="datetime" placeholder="Fecha llegada" id="idApvFechaLlegada"style= "display:list-item">
+    <input type="text" placeholder="Aeropuerto Salida" id="idApvAeropuertoSalida"style= "display:list-item">
+    <input type="text" placeholder="Aeropuerto Llegada" id="idApvAeropuertoLlegada"style= "display:list-item">
+    <input type="text" placeholder="Codigo de reserva" id="idApvReserva"style= "display:list-item">
+    <input type="number" placeholder="Tiempo de escala (horas)" id="idApvTiempo"style= "display:list-item">
+    <input type="text" placeholder="Info aeronave" id="idApvInfo"style= "display:list-item">
+    <button type="button" id="submitApvVuelo" >Aceptar</button>
+  </div>
+  <div>
+    <h1>Asignar Plan hotel a un viaje</h1>
+    <!-- Aph: Asignar plan hotel -->
+    <input type="number" placeholder="Id Viaje" id="idAphViaje"style= "display:list-item">
+    <input type="number" placeholder="Id Plan" id="idAphPlan"style= "display:list-item">
+    <input type="text" placeholder="Descripcion plan" id="idAphDescripcion"style= "display:list-item" value="">
+    <input type="number" placeholder="Id Hotel" id="idAphHotel"style= "display:list-item">
+    <input type="text" placeholder="Nombre" id="idAphNombre"style= "display:list-item">
+    <input type="text" placeholder="Ciudad" id="idAphCiudad"style= "display:list-item">
+    <input type="number" placeholder="Cantidad estrellas" id="idAphCantEstrellas"style= "display:list-item">
+    <input type="datetime" placeholder="Fecha llegada" id="idAphFechaLlegada"style= "display:list-item">
+    <input type="datetime" placeholder="Fecha salida" id="idAphFechaSalida"style= "display:list-item">
+    <button type="button" id="submitAphHotel">Aceptar</button>
+  </div>
+  <div>
+    <h1>Recuperar todos los planes de un viaje</h1>
+    <input type="number" placeholder="id Viaje" id="idViajeTraerPlanes"style= "display:list-item">
+    <button type="button" id="submitPlanesSegunViaje" >Aceptar</button>
+    <div id="contenedorPlanSegunViaje">
+    </div>
+  </div>
+    <h1>Generar reporte de viajes por realizar</h1>
+    <input type="number" placeholder="Id Usuario" id="idUsuarioPorRealizar"style= "display:list-item">
+    <button type="button" id="submitPorRealizar" >Aceptar</button>
+  </div>
+  <div id="contenedorViajeRealizar">
+  </div>
+  <div>
+    <h1>Generar reporte de viajes ya finalizados</h1>
+    <input type="number" placeholder="Id Usuario" id="idUsuarioFinalizados"style= "display:list-item">
+    <button type="button" id="submitFinalizados" >Aceptar</button>
+  </div>
+  <div id="contenedorViajeFinalizado">
+  </div>
+  <div>
+    <h1>Generar reporte de viajes entre rango de fechas</h1>
+    <input type="number" placeholder="Id Usuario" id="idUsuarioRango"style= "display:list-item">
+    <input type="date" placeholder="Fecha 1" id="idFecha1Rango"style= "display:list-item">
+    <input type="date" placeholder="Fecha 2" id="idFecha2Rango"style= "display:list-item">
+    <button type="button" id="submitRango" >Aceptar</button>
+  </div>
+  <div id="contenedorViajeRango">
+  </div>
+  <div>
+    <h1>Generar reporte de viajes por zona</h1>
+    <input type="number" placeholder="Id Usuario" id="idUsuarioZona"style= "display:list-item">
+    <input type="text" placeholder="Zona geografica (pais)" id="idZona"style= "display:list-item">
+    <button type="button" id="submitZona" >Aceptar</button>
+  </div>
+  <div id="contenedorZona">
+  </div>
+  <h1>Get Usuario con más viajes realizados</h1>
+  <button type="button" id="submitGetUsuarioMasViajes" >Aceptar</button>
+  <div id="contenedorViajesUsuario">
+  </div>
+  <h1>Get zona en la que más viajes se realizaron</h1>
+  <button type="button" id="submitGetZona" >Aceptar</button>
+  <div id="contenedorViajesZona">
+  </div>
+</body>
+<script src="main.js" charset="utf-8"></script>
+</html>
