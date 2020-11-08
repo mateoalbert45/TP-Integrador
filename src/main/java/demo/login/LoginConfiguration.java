@@ -1,4 +1,4 @@
-package login;
+package demo.login;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -20,8 +20,11 @@ public class LoginConfiguration extends WebSecurityConfigurerAdapter {
 		    //Agrega el método de filtrado que codificamos nosotros 
 			.addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 			.authorizeRequests()
+			.antMatchers(HttpMethod.GET, "/greetings").permitAll()
 			.antMatchers(HttpMethod.POST, "/user").permitAll()
-			.antMatchers(HttpMethod.GET, "/viaje/getAll").permitAll()
+			.antMatchers(HttpMethod.GET, "/").permitAll()
+			.antMatchers(HttpMethod.GET, "/main.js").permitAll()
+			//.antMatchers(HttpMethod.GET, "/oldman").hasAuthority("LINK") // Esta línea es otra manera de agregar requerimientos de logeo.
 			.anyRequest().authenticated();
 	}
 }

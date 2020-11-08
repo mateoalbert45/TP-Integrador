@@ -32,6 +32,7 @@ public class Login {
 	@PostMapping("/user")
 	public String login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
 		// En el caso normal debería chequear que el usuario exista.
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		Usuario usuario = repository.getUsuario(username, pwd);
 		System.out.println(usuario);
 		if (usuario != null) {

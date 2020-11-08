@@ -48,7 +48,7 @@ class LoadDatabase {
 			 	LocalDate fecha3 = LocalDate.of(2025, 10, 12);
 			 	LocalDate fecha4 = LocalDate.of(2025, 10, 13);
 			
-		    	Usuario u1 = new Usuario(Long.valueOf("1"), "usuario","masviajes", "a");
+		    	Usuario u1 = new Usuario(Long.valueOf("1"), "a","a", "a");
 		    	Usuario u2 = new Usuario(Long.valueOf("2"), "usuario","menosviajes", "a");
 
 		    	Vuelo vu1 = new Vuelo(Long.valueOf("1"), "c", "c", "c", "c", "c", Long.valueOf("1"), Long.valueOf("1"), "c");
@@ -80,7 +80,7 @@ class LoadDatabase {
 		    	log.info("Preloading " + repositoryUsuario.save(u1));
 //		    	 log.info("Preloading " + repositoryVuelo.save(vu1));
 //	            log.info("Preloading " + repositoryPlan.save(p1));
-	            log.info("Preloading " + repositoryViaje.save(viaje1));
+//	            log.info("Preloading " + repositoryViaje.save(viaje1));
 //	            log.info("Preloading " + repositoryViaje.save(viaje2));
 //	            log.info("Preloading " + repositoryViaje.save(viaje3));
 
