@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import demo.model.Hotel;
 import demo.model.Plan;
+import demo.model.PlanHotel;
 import demo.model.PlanVuelo;
 import demo.model.Viaje;
 import demo.model.Vuelo;
@@ -57,6 +59,16 @@ public class PlanController {
         List<PlanVuelo> plan= repository.getPlanesVuelo();
         System.out.println("Aca abajo");
         System.out.println(plan.get(0).getVuelo().getId());
+        return p;
+    }
+    
+    @PostMapping("/addPlanHotel/{idPlan}/{descripcionPlan}")
+    public Plan addPlanHotel(@RequestBody Hotel h,@PathVariable long idPlan,@PathVariable String descripcionPlan) {
+    	PlanHotel p = new PlanHotel(idPlan, descripcionPlan,h);
+        repository.save(p);
+        List<PlanHotel> plan= repository.getPlanesHotel();
+        System.out.println("Aca abajo");
+        System.out.println(plan.get(0).getHotel().getId());
         return p;
     }
     

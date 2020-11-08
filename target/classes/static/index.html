@@ -59,7 +59,7 @@
     <!-- Apv: Asignar plan vuelo -->
     <input type="number" placeholder="Id Viaje" id="idApvViaje"style= "display:list-item">
     <input type="number" placeholder="Id Plan" id="idApvPlan"style= "display:list-item">
-    <input type="text" placeholder="Descripcion plan" id="idApvDescripcion"style= "display:list-item">
+    <input type="text" placeholder="Descripcion plan" id="idApvDescripcion"style= "display:list-item" value="">
     <input type="number" placeholder="Id Vuelo" id="idApvVuelo"style= "display:list-item">
     <input type="text" placeholder="Compañia" id="idApvCompañia"style= "display:list-item">
     <input type="datetime" placeholder="Fecha salida" id="idApvFechaSalida"style= "display:list-item">
@@ -70,6 +70,20 @@
     <input type="number" placeholder="Tiempo de escala (horas)" id="idApvTiempo"style= "display:list-item">
     <input type="text" placeholder="Info aeronave" id="idApvInfo"style= "display:list-item">
     <button type="button" id="submitApvVuelo" >Aceptar</button>
+  </div>
+  <div>
+    <h1>Asignar Plan hotel a un viaje</h1>
+    <!-- Aph: Asignar plan hotel -->
+    <input type="number" placeholder="Id Viaje" id="idAphViaje"style= "display:list-item">
+    <input type="number" placeholder="Id Plan" id="idAphPlan"style= "display:list-item">
+    <input type="text" placeholder="Descripcion plan" id="idAphDescripcion"style= "display:list-item" value="">
+    <input type="number" placeholder="Id Hotel" id="idAphHotel"style= "display:list-item">
+    <input type="text" placeholder="Nombre" id="idAphNombre"style= "display:list-item">
+    <input type="text" placeholder="Ciudad" id="idAphCiudad"style= "display:list-item">
+    <input type="number" placeholder="Cantidad estrellas" id="idAphCantEstrellas"style= "display:list-item">
+    <input type="datetime" placeholder="Fecha llegada" id="idAphFechaLlegada"style= "display:list-item">
+    <input type="datetime" placeholder="Fecha salida" id="idAphFechaSalida"style= "display:list-item">
+    <button type="button" id="submitAphHotel">Aceptar</button>
   </div>
   <div>
     <h1>Recuperar todos los planes de un viaje</h1>

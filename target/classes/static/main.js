@@ -12,6 +12,7 @@ document.querySelector("#submitRango").addEventListener("click", getReporteViaje
 document.querySelector("#submitZona").addEventListener("click", getViajesZona);
 document.querySelector("#submitGetUsuarioMasViajes").addEventListener("click", getUsuarioMasViajes);
 document.querySelector("#submitGetZona").addEventListener("click", getViajesZona);
+document.querySelector("#submitAphHotel").addEventListener("click", asignarPlanHotel);
 
 
 
@@ -195,7 +196,52 @@ function asignarPlanVuelo(){ //Método para postear un viaje, agarramos los valu
 	 	 });
  }
 
+ function asignarPlanHotel(){ //Método para postear un viaje, agarramos los values de los inputs de la pagina, creamos un objeto con esos datos y lo subimos a la base
+ 	let idViaje = document.querySelector("#idAphViaje").value;
+ 	let idPlan = document.querySelector("#idAphPlan").value;
+ 	let descripcion = document.querySelector("#idAphDescripcion").value;
+ 	let idHotel = document.querySelector("#idAphHotel").value;
+ 	let nombre = document.querySelector("#idAphNombre").value;
+	let ciudad = document.querySelector("#idAphCiudad").value;
+	let fechaLlegada = document.querySelector("#idAphFechaLlegada").value;
+ 	let fechaSalida = document.querySelector("#idAphFechaSalida").value;
 
+ 	let urlAddPlanHotel = "plan/addPlanHotel/" + idPlan + "/" + descripcion;
+ 	let urlAsignarPlanHotel = "viajePlan/asignarPlanViaje/" + idViaje + "/" + idPlan;
+
+ 	let hotel = {
+ 	      "id": idHotel,
+ 	      "nombre": nombre,
+ 	       "ciudad": ciudad,
+ 			"fechaLlegada": fechaLlegada,
+ 			"fechaSalida": fechaSalida
+ 	 };
+
+ 	 let plan = {
+ 		 "id": idPlan,
+ 		 "descripcion": descripcion,
+ 		 "hotel" : hotel
+ 	 }
+ 	 console.log(plan);
+
+ 	 	 fetch(urlAddPlanHotel, {
+ 	 	     'method': 'POST',
+ 	 	      'headers': {
+ 	 	        'Content-Type': 'application/json',
+ 	 	        'Accept': 'application/json'
+ 	 	     },
+ 	 	     'body': JSON.stringify(hotel)
+ 	 	 }).then(function() {
+ 	 		 fetch(urlAsignarPlanHotel, {
+ 	 		     'method': 'POST',
+ 	 		      'headers': {
+ 	 		        'Content-Type': 'application/json',
+ 	 		        'Accept': 'application/json'
+ 	 		     },
+ 	 		 })	   }, function() {
+ 	 	   // rechazo
+ 	 	 });
+  }
 
 
 async function getVuelos(){
@@ -301,7 +347,7 @@ async function planesSegunViaje(){
 	contenedor.innerHTML = JSON.stringify(json);
  }
 
- 
+
 	 async function getReporteViajesRango(){
 		 let idUsuario = document.querySelector("#idUsuarioRango").value;
 		 let fecha1 = document.querySelector("#idFecha1Rango").value;
