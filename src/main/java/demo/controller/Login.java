@@ -21,7 +21,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @RestController
 public class Login {
 	@Qualifier("UsuarioRepository")
-	@Autowired
 	private final UsuarioRepository repository;
 	// Servicio de login
 
