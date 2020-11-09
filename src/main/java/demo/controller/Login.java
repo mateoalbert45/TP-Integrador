@@ -3,7 +3,7 @@ package demo.controller;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-
+import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
@@ -25,6 +25,7 @@ public class Login {
 	@Qualifier("UsuarioRepository")
 	private final UsuarioRepository repository;
 	// Servicio de login
+	private AtomicLong id = new AtomicLong();
 
 	public Login(@Qualifier("usuarioRepository") UsuarioRepository repository) {
 		this.repository = repository;
@@ -55,13 +56,13 @@ public class Login {
 		}
 		List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
 
-		String token = Jwts.builder().setId("knife").setSubject(username)
+		String token = Jwts.builder().setId(String.valueOf(this.id)).setSubject(username)
 				.claim("authorities",
 						grantedAuthorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + 600000))
 				.signWith(SignatureAlgorithm.HS512, secretKey.getBytes()).compact();
-
+				this.id.getAndIncrement();
 		return "Bearer " + token;
 	}
 }
