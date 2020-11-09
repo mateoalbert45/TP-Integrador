@@ -25,6 +25,7 @@ public class Login {
 	@Qualifier("UsuarioRepository")
 	private final UsuarioRepository repository;
 	// Servicio de login
+	private int id = 0;
 
 	public Login(@Qualifier("usuarioRepository") UsuarioRepository repository) {
 		this.repository = repository;
@@ -54,14 +55,14 @@ public class Login {
 			roles += ",LINK";
 		}
 		List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
-
-		String token = Jwts.builder().setId("knife").setSubject(username)
+		
+		String token = Jwts.builder().setId(String.valueOf(id)).setSubject(username)
 				.claim("authorities",
 						grantedAuthorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + 600000))
 				.signWith(SignatureAlgorithm.HS512, secretKey.getBytes()).compact();
-
+				this.id ++;
 		return "Bearer " + token;
 	}
 }
