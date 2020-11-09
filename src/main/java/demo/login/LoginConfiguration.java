@@ -24,6 +24,7 @@ public class LoginConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.GET, "/user").permitAll()
 			.antMatchers(HttpMethod.GET, "/").permitAll()
 			.antMatchers(HttpMethod.GET, "/viaje/getAll").permitAll()
+			.antMatchers(HttpMethod.GET, "/plan/getAll").permitAll()
 			.antMatchers(HttpMethod.GET, "/main.js").permitAll()
 			//.antMatchers(HttpMethod.GET, "/oldman").hasAuthority("LINK") // Esta línea es otra manera de agregar requerimientos de logeo.
 			.anyRequest().authenticated();
