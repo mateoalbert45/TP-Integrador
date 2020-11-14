@@ -39,6 +39,7 @@ public class LoginConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.GET, "/greetings").permitAll()
 			.antMatchers(HttpMethod.GET, "/user").permitAll()
 			.antMatchers(HttpMethod.GET, "/").permitAll()
+			.antMatchers(HttpMethod.GET, "/main.js").permitAll()
 			.antMatchers(AUTH_WHITELIST).permitAll()
 			.anyRequest().authenticated()
 			;
