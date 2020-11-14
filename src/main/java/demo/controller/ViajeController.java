@@ -87,7 +87,4 @@ public class ViajeController {
 	        return JSONObject.quote(repository.getViajesPorZona().get(0));
 	    }
 	
-					
-
-
 }

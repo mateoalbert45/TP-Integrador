@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -77,29 +78,24 @@ public class ViajePlanController {
 	    
 	    @GetMapping("/planSegunViaje/{idViaje}")
 	    public Object planSegunViaje(@PathVariable Long idViaje) {
-	    	System.out.println("ACA");
 	    	String planes = "";
 	    	for(PlanVuelo p: repository.planSegunViaje(idViaje)) {
-		    	System.out.println("ACA");
-		    	System.out.println(p.toString());
-		    	planes += p.toString() + "  ";
+	    	planes += p.toString() + "  ";
 	    	}
 	        return JSONObject.quote(planes);
-
-	    }
+    }
 	    
 //	    @GetMapping("/planSegunViaje/{idViaje}")
-//	    public List<Plan> planSegunViaje(@PathVariable Long idViaje) {
-//	    	System.out.println("ACA");
+//	    public String planSegunViaje(@PathVariable Long idViaje) {
 //	    	List<Plan> planes = new ArrayList<Plan>();
-//	    	for(Plan p: repository.planSegunViaje(idViaje)) {
-//		    	System.out.println("ACA");
+//	    	
+//    	for(Plan p: repository.planSegunViaje(idViaje)) {
 //	    		planes.add(p);
-//		    	System.out.println(p.toString());
 //	    	}
-//	        return planes;
-//	    }
-	    
+//    	
+//	        return new JSONArray(planes).toString();
+//    }
+    
 
 
 }
