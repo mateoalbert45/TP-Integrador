@@ -76,25 +76,25 @@ public class ViajePlanController {
 	    }
 	    
 	    
-//	    @GetMapping("/planSegunViaje/{idViaje}")
-//	    public Object planSegunViaje(@PathVariable Long idViaje) {
-//	    	String planes = "";
-//	    	for(PlanVuelo p: repository.planSegunViaje(idViaje)) {
-//	    	planes += p.toString() + "  ";
-//	    	}
-//	        return JSONObject.quote(planes);
-//    }
-//	    
 	    @GetMapping("/planSegunViaje/{idViaje}")
-	    public String planSegunViaje(@PathVariable Long idViaje) {
-	    	List<Plan> planes = new ArrayList<Plan>();
-	    	
-    	for(Plan p: repository.planSegunViaje(idViaje)) {
-	    		planes.add(p);
+	    public Object planSegunViaje(@PathVariable Long idViaje) {
+	    	String planes = "";
+	    	for(PlanVuelo p: repository.planSegunViaje(idViaje)) {
+	    	planes += p.toString() + "  ";
 	    	}
-    	
-	        return new JSONArray(planes).toString();
+	        return JSONObject.quote(planes);
     }
+	    
+//	    @GetMapping("/planSegunViaje/{idViaje}")
+//	    public String planSegunViaje(@PathVariable Long idViaje) {
+//	    	List<Plan> planes = new ArrayList<Plan>();
+//	    	
+//    	for(Plan p: repository.planSegunViaje(idViaje)) {
+//	    		planes.add(p);
+//	    	}
+//    	
+//	        return new JSONArray(planes).toString();
+//    }
     
 
 

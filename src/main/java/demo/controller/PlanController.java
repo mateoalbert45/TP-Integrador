@@ -57,8 +57,8 @@ public class PlanController {
     	System.out.println(p.getVuelo().getAeropuertoLlegada());
         repository.save(p);
         List<PlanVuelo> plan= repository.getPlanesVuelo();
-        System.out.println("Aca abajo");
-        System.out.println(plan.get(0).getVuelo().getId());
+//        System.out.println("Aca abajo");
+//        System.out.println(plan.get(0).getVuelo().getId());
         return p;
     }
     
@@ -67,8 +67,8 @@ public class PlanController {
     	PlanHotel p = new PlanHotel(idPlan, descripcionPlan,h);
         repository.save(p);
         List<PlanHotel> plan= repository.getPlanesHotel();
-        System.out.println("Aca abajo");
-        System.out.println(plan.get(0).getHotel().getId());
+//        System.out.println("Aca abajo");
+//        System.out.println(plan.get(0).getHotel().getId());
         return p;
     }
     
