@@ -66,7 +66,7 @@ function postViaje() { //Método para postear un viaje, agarramos los values de 
 
 
 //carga datos desde archivo .txt
-let openFile = function (event) {
+let openFile1 = function (event) {
 	let input = event.target;
 	let reader = new FileReader();
 	reader.onload = function () {
@@ -250,6 +250,88 @@ function asignarPlanHotel() { //Método para postear un viaje, agarramos los val
 	});
 }
 
+//carga datos desde archivo .txt
+let openFile2 = function (event) {
+	let input = event.target;
+	let reader = new FileReader();
+	reader.onload = function () {
+		let texto = reader.result;
+		let texto_array = texto.split("\r\n");
+		let idViaje;
+		let idPlan;
+		let descrip;
+		let idHotel;
+		let nombre;
+		let ciudad;
+		let cantEstre;
+		let fechaIni;
+		let fechaFin;
+		let i = 0;
+		for (let element in texto_array) {
+			let json_element;
+			if (i % 9 == 0)
+				idViaje = texto_array[element];
+			else if (i % 9 == 1)
+				idPlan = texto_array[element];
+			else if (i % 9 == 2)
+				descrip = texto_array[element];
+			else if (i % 9 == 3)
+				idHotel = texto_array[element];
+			else if (i % 9 == 4)
+				nombre = texto_array[element];
+			else if (i % 9 == 5)
+				ciudad = texto_array[element];
+			else if (i % 9 == 6)
+				cantEstre = texto_array[element];
+			else if (i % 9 == 7)
+				fechaIni = texto_array[element];
+			else if (i % 9 == 8) {
+				fechaFin = texto_array[element];
+				let hotel = {
+					"id": idHotel,
+					"nombre": nombre,
+					"ciudad": ciudad,
+					"fechaLlegada": fechaIni,
+					"fechaSalida": fechaFin
+				};
+			
+				let plan = {
+					"id": idPlan,
+					"descripcion": descrip,
+					"hotel": hotel
+				}
+				
+				let urlAddPlanHotel = "plan/addPlanHotel/" + idPlan + "/" + descrip;
+				let urlAsignarPlanHotel = "viajePlan/asignarPlanViaje/" + idViaje + "/" + idPlan;
+				
+				fetch(urlAddPlanHotel, {
+					'method': 'POST',
+					'headers': {
+						'Content-Type': 'application/json',
+						'Accept': 'application/json',
+						'Authorization': token
+					},
+					'body': JSON.stringify(hotel)
+				}).then(function () {
+					fetch(urlAsignarPlanHotel, {
+						'method': 'POST',
+						'headers': {
+							'Content-Type': 'application/json',
+							'Accept': 'application/json',
+							'Authorization': token
+						},
+					})
+				}, function () {
+					// rechazo
+				});
+				
+				
+			}
+			i++;
+		}
+	};
+	reader.readAsText(input.files[0]);
+}
 
 async function getVuelos() {
 	let url = "vuelo/getAll";

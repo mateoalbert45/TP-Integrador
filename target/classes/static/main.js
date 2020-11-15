@@ -66,7 +66,7 @@ function postViaje() { //Método para postear un viaje, agarramos los values de 
 
 
 //carga datos desde archivo .txt
-let openFile = function (event) {
+let openFile1 = function (event) {
 	let input = event.target;
 	let reader = new FileReader();
 	reader.onload = function () {
@@ -250,6 +250,55 @@ function asignarPlanHotel() { //Método para postear un viaje, agarramos los val
 	});
 }
 
+//carga datos desde archivo .txt
+let openFile2 = function (event) {
+	let input = event.target;
+	let reader = new FileReader();
+	reader.onload = function () {
+		let texto = reader.result;
+		let texto_array = texto.split("\r\n");
+		let id;
+		let nombre;
+		let fechaIni;
+		let fechaFin;
+		let descripcion;
+		let i = 0;
+		for (let element in texto_array) {
+			let json_element;
+			if (i % 5 == 0)
+				id = texto_array[element];
+			else if (i % 5 == 1)
+				nombre = texto_array[element];
+			else if (i % 5 == 2)
+				fechaIni = texto_array[element];
+			else if (i % 5 == 3)
+				fechaFin = texto_array[element];
+			else if (i % 5 == 4) {
+				descripcion = texto_array[element];
+				let viaje = {
+					"id": id,
+					"nombre": nombre,
+					"fechaInicio": fechaIni,
+					"fechaFin": fechaFin,
+					"descripcion": descripcion
+				};
+				console.log(viaje);
+				let url = "viaje/add";
+				fetch(url, {
+					'method': 'POST',
+					'headers': {
+						'Content-Type': 'application/json',
+						'Accept': 'application/json',
+						'Authorization': token
+					},
+					'body': JSON.stringify(viaje)
+				})
+			}
+			i++;
+		}
+	};
+	reader.readAsText(input.files[0]);
+}
 
 async function getVuelos() {
 	let url = "vuelo/getAll";
