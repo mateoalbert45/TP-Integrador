@@ -38,7 +38,7 @@
   <div>
     <p>ii) enviando un archivo de texto, que contenga toda la confirmación de la reserva. En este caso, el sistema debe extraer los datos del archivo y cargarlos.</p>
     <h1>Cargar desde archivo</h1>
-    <input type='file' accept='text/plain' onchange='openFile(event)'>
+    <input type='file' accept='text/plain' onchange='openFile1(event)'>
 </div>
   <div>
     <p>Para un vuelo que ha sido cargado, la aplicación deberá mostrar número de vuelo, compañía, fecha y mas cosas</p>
@@ -85,6 +85,11 @@
     <input type="datetime" placeholder="Fecha salida" id="idAphFechaSalida"style= "display:list-item">
     <button type="button" id="submitAphHotel">Aceptar</button>
   </div>
+  <div>
+    <p>ii) enviando un archivo de texto, que contenga toda la confirmación del hotel. En este caso, el sistema debe extraer los datos del archivo y cargarlos.</p>
+    <h1>Cargar desde archivo</h1>
+    <input type='file' accept='text/plain' onchange='openFile2(event)'>
+</div>
   <div>
     <h1>Recuperar todos los planes de un viaje</h1>
     <input type="number" placeholder="id Viaje" id="idViajeTraerPlanes"style= "display:list-item">
