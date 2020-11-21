@@ -294,16 +294,16 @@ let openFile2 = function (event) {
 					"fechaLlegada": fechaIni,
 					"fechaSalida": fechaFin
 				};
-			
+
 				let plan = {
 					"id": idPlan,
 					"descripcion": descrip,
 					"hotel": hotel
 				}
-				
+
 				let urlAddPlanHotel = "plan/addPlanHotel/" + idPlan + "/" + descrip;
 				let urlAsignarPlanHotel = "viajePlan/asignarPlanViaje/" + idViaje + "/" + idPlan;
-				
+
 				fetch(urlAddPlanHotel, {
 					'method': 'POST',
 					'headers': {
@@ -324,8 +324,8 @@ let openFile2 = function (event) {
 				}, function () {
 					// rechazo
 				});
-				
-				
+
+
 			}
 			i++;
 		}
@@ -336,10 +336,11 @@ let openFile2 = function (event) {
 async function getVuelos() {
 	let url = "vuelo/getAll";
 	let r = await fetch(url, {
-		'method': 'GET',
-		'mode': 'cors',
-		'Authorization': token
-	});
+			 'method': 'GET',
+			 headers:{
+			 'mode': 'cors',
+			 'Authorization': token}
+	 });
 	let json = await r.json();
 	console.log(json);
 	let contenedor = document.querySelector("#contenedorVuelo");
@@ -354,7 +355,9 @@ async function login() {
 	let url = "user" + "?user=" + nombre + "&password=" + contraseña;
 	let r = await fetch(url, {
 		'method': 'GET',
-		'mode': 'cors'
+		headers:{
+		'mode': 'cors',
+		'Authorization': token}
 	});
 	let json = await r.json();
 	console.log(json);
@@ -404,8 +407,9 @@ async function getReporteViajesPorRealizar() {
 	let url = "usuario/viajesPendientes/" + idUsuario;
 	let r = await fetch(url, {
 		'method': 'GET',
+		headers:{
 		'mode': 'cors',
-		'Authorization': token
+		'Authorization': token}
 	});
 	let json = await r.json();
 	console.log(json);
@@ -418,8 +422,9 @@ async function getReporteViajesFinalizados() {
 	let url = "usuario/viajesFinalizados/" + idUsuario;
 	let r = await fetch(url, {
 		'method': 'GET',
+		headers:{
 		'mode': 'cors',
-		'Authorization': token
+		'Authorization': token}
 	});
 	let json = await r.json();
 	console.log(json);
@@ -436,8 +441,9 @@ async function planesSegunViaje() {
 
 	let r = await fetch(url, {
 		'method': 'GET',
+		headers:{
 		'mode': 'cors',
-		'Authorization': token
+		'Authorization': token}
 	});
 	let json = await r.json();
 	console.log(json);
@@ -453,8 +459,9 @@ async function getReporteViajesRango() {
 	let url = "usuario/viajesRangoFecha/" + idUsuario + "/" + fecha1 + "/" + fecha2;
 	let r = await fetch(url, {
 		'method': 'GET',
+		headers:{
 		'mode': 'cors',
-		'Authorization': token
+		'Authorization': token}
 	});
 	let json = await r.json();
 	console.log(json);
@@ -470,8 +477,9 @@ async function getViajesZona() {
 
 	let r = await fetch(url, {
 		'method': 'GET',
+		headers:{
 		'mode': 'cors',
-		'Authorization': token
+		'Authorization': token}
 	});
 	let json = await r.json();
 	console.log(json);
@@ -482,8 +490,9 @@ async function getUsuarioMasViajes() {
 	let url = "viaje/usuarioMasViajes";
 	let r = await fetch(url, {
 		'method': 'GET',
+		headers:{
 		'mode': 'cors',
-		'Authorization': token
+		'Authorization': token}
 	});
 	let json = await r.json();
 	console.log(json);
@@ -495,8 +504,9 @@ async function getViajesZona() {
 	let url = "viaje/masViajesPorZona";
 	let r = await fetch(url, {
 		'method': 'GET',
+		headers:{
 		'mode': 'cors',
-		'Authorization': token
+		'Authorization': token}
 	});
 	let json = await r.json();
 	console.log(json);

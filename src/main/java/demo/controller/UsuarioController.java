@@ -26,7 +26,7 @@ import demo.repository.UsuarioRepository;
 import demo.repository.ViajeRepository;
 
 @RestController
-	
+@RequestMapping("usuario")
 /**
  * Esta clase administra los servicios rest de los clientes.
  * 
@@ -49,6 +49,7 @@ public class UsuarioController {
     
     @PostMapping("/add")
     public Usuario newUsuario(@RequestBody Usuario u) {
+    	System.out.println("se guardo");
         return repository.save(u);
     }
     
