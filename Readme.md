@@ -1,11 +1,13 @@
-# Getting Started
+# Trabajo Practico Integrador
 
-### Reference Documentation
-For further reference, please consider the following sections:
+En este trabajo se implemento una agenda de viajes mediante servicios Rest utilizando como framework Spring Boot, 
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/maven-plugin/reference/html/#build-image)
+### Wiki de referencia
+A continuacion se dejan los links a las wikis:
+
+* [Vista de arquitectura](https://github.com/mateoalbert45/TP-Integrador/wiki/Vista-de-arquitectura)
+* [Vista de runtime](https://github.com/mateoalbert45/TP-Integrador/wiki/Vista-de-runtime)
+* [Trazabilidad de los requerimientos](https://github.com/mateoalbert45/TP-Integrador/wiki/Trazabilidad-de-los-requerimientos)
 * [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/reference/htmlsingle/#boot-features-jpa-and-spring-data)
 * [Spring Web](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications)
 
