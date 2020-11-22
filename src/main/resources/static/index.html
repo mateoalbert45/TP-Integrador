@@ -33,11 +33,11 @@
     <button type="button" id="submitPostViaje" >Aceptar</button>
   </div>
   <div>
-    <h1>Cargar desde archivo</h1>
+    <h1>Crear viaje mediante un archivo</h1>
     <input type='file' accept='text/plain' onchange='openFile1(event)'>
 </div>
   <div>
-    <h1>Recuperar Vuelos</h1>
+    <h1>Recuperar todos los Vuelos del usuario</h1>
     <button type="button" id="submitGetVuelos" >Aceptar</button>
     <div id="contenedorVuelo">
     </div>
@@ -50,7 +50,7 @@
     <button type="button" id="submitAsignarPlan" >Aceptar</button>
   </div>
   <div>
-    <h1>Asignar Plan vuelo a un viaje</h1>
+    <h1>Asignar vuelo a un viaje</h1>
     <!-- Apv: Asignar plan vuelo -->
     <input type="number" placeholder="Id Viaje" id="idApvViaje"style= "display:list-item">
     <input type="number" placeholder="Id Plan" id="idApvPlan"style= "display:list-item">
@@ -67,7 +67,7 @@
     <button type="button" id="submitApvVuelo" >Aceptar</button>
   </div>
   <div>
-    <h1>Asignar Plan hotel a un viaje</h1>
+    <h1>Asignar Plan de tipo hotel a un viaje</h1>
     <!-- Aph: Asignar plan hotel -->
     <input type="number" placeholder="Id Viaje" id="idAphViaje"style= "display:list-item">
     <input type="number" placeholder="Id Plan" id="idAphPlan"style= "display:list-item">
@@ -81,7 +81,7 @@
     <button type="button" id="submitAphHotel">Aceptar</button>
   </div>
   <div>
-    <h1>Cargar desde archivo</h1>
+    <h1>Asignar Plan de tipo hotel a un viaje mediante un archivo</h1>
     <input type='file' accept='text/plain' onchange='openFile2(event)'>
 </div>
   <div>
@@ -111,17 +111,17 @@
   <div id="contenedorViajeRango">
   </div>
   <div>
-    <h1>Generar reporte de viajes por zona</h1>
+    <h1>Generar reporte de viajes filtrando por zona</h1>
     <input type="text" placeholder="Zona geografica (pais)" id="idZona"style= "display:list-item">
     <button type="button" id="submitViajeFiltroZona" >Aceptar</button>
   </div>
   <div id="contenedorViajeFiltroZona">
   </div>
-  <h1>Get Usuario con más viajes realizados</h1>
+  <h1>Recuperar el usuario con más viajes realizados</h1>
   <button type="button" id="submitGetUsuarioMasViajes" >Aceptar</button>
   <div id="contenedorViajesUsuario">
   </div>
-  <h1>Get zona en la que más viajes se realizaron</h1>
+  <h1>Recuperar zona en la que más viajes se realizaron</h1>
   <button type="button" id="submitGetZona" >Aceptar</button>
   <div id="contenedorViajesZona">
   </div>
