@@ -79,7 +79,8 @@ public class ViajePlanController {
 	    @GetMapping("/planSegunViaje/{idViaje}")
 	    public Object planSegunViaje(@PathVariable Long idViaje) {
 	    	String planes = "";
-	    	for(PlanVuelo p: repository.planSegunViaje(idViaje)) {
+	    	for(Plan p: repository.planSegunViaje(idViaje)) {
+	    		System.out.println(p.toString());
 	    	planes += p.toString() + "  ";
 	    	}
 	        return JSONObject.quote(planes);

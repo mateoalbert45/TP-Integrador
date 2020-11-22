@@ -133,7 +133,6 @@ public class UsuarioController {
     public List<Viaje> viajesPorZona(@PathVariable Long usuario, @PathVariable String destino) {
     	List<Viaje> viajes = repository.getViajes(usuario);
     	List<Viaje> viajesPorZona = new ArrayList<Viaje>();
-
     	for(Viaje v: viajes) {
     		System.out.println("destinos  " + v.getDestinos());
     		System.out.println("Destino "  +destino);

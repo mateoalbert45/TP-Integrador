@@ -37,13 +37,13 @@
     <input type='file' accept='text/plain' onchange='openFile1(event)'>
 </div>
   <div>
-    <h1>Get Vuelos</h1>
+    <h1>Recuperar Vuelos</h1>
     <button type="button" id="submitGetVuelos" >Aceptar</button>
     <div id="contenedorVuelo">
     </div>
   </div>
   <div>
-    <h1>Asignar plan a un vuelo</h1>
+    <h1>Asignar plan a un viaje</h1>
     <input type="number" placeholder="id Viaje" id="idAsignarPlanViaje"style= "display:list-item">
     <input type="number" placeholder="id Plan" id="idAsignarPlan"style= "display:list-item">
     <input type="text" placeholder="descripcion plan" id="idAsignarDescripcion"style= "display:list-item">
@@ -81,7 +81,6 @@
     <button type="button" id="submitAphHotel">Aceptar</button>
   </div>
   <div>
-    <p>ii) enviando un archivo de texto, que contenga toda la confirmación del hotel. En este caso, el sistema debe extraer los datos del archivo y cargarlos.</p>
     <h1>Cargar desde archivo</h1>
     <input type='file' accept='text/plain' onchange='openFile2(event)'>
 </div>
@@ -93,21 +92,18 @@
     </div>
   </div>
     <h1>Generar reporte de viajes por realizar</h1>
-    <input type="number" placeholder="Id Usuario" id="idUsuarioPorRealizar"style= "display:list-item">
     <button type="button" id="submitPorRealizar" >Aceptar</button>
   </div>
   <div id="contenedorViajeRealizar">
   </div>
   <div>
     <h1>Generar reporte de viajes ya finalizados</h1>
-    <input type="number" placeholder="Id Usuario" id="idUsuarioFinalizados"style= "display:list-item">
     <button type="button" id="submitFinalizados" >Aceptar</button>
   </div>
   <div id="contenedorViajeFinalizado">
   </div>
   <div>
     <h1>Generar reporte de viajes entre rango de fechas</h1>
-    <input type="number" placeholder="Id Usuario" id="idUsuarioRango"style= "display:list-item">
     <input type="date" placeholder="Fecha 1" id="idFecha1Rango"style= "display:list-item">
     <input type="date" placeholder="Fecha 2" id="idFecha2Rango"style= "display:list-item">
     <button type="button" id="submitRango" >Aceptar</button>
@@ -116,11 +112,10 @@
   </div>
   <div>
     <h1>Generar reporte de viajes por zona</h1>
-    <input type="number" placeholder="Id Usuario" id="idUsuarioZona"style= "display:list-item">
     <input type="text" placeholder="Zona geografica (pais)" id="idZona"style= "display:list-item">
-    <button type="button" id="submitZona" >Aceptar</button>
+    <button type="button" id="submitViajeFiltroZona" >Aceptar</button>
   </div>
-  <div id="contenedorZona">
+  <div id="contenedorViajeFiltroZona">
   </div>
   <h1>Get Usuario con más viajes realizados</h1>
   <button type="button" id="submitGetUsuarioMasViajes" >Aceptar</button>

@@ -9,7 +9,7 @@ document.querySelector("#submitPlanesSegunViaje").addEventListener("click", plan
 document.querySelector("#submitPorRealizar").addEventListener("click", getReporteViajesPorRealizar);
 document.querySelector("#submitFinalizados").addEventListener("click", getReporteViajesFinalizados);
 document.querySelector("#submitRango").addEventListener("click", getReporteViajesRango);
-document.querySelector("#submitZona").addEventListener("click", getViajesZona);
+document.querySelector("#submitViajeFiltroZona").addEventListener("click", getViajesFiltroZona);
 document.querySelector("#submitGetUsuarioMasViajes").addEventListener("click", getUsuarioMasViajes);
 document.querySelector("#submitGetZona").addEventListener("click", getViajesZona);
 document.querySelector("#submitAphHotel").addEventListener("click", asignarPlanHotel);
@@ -404,7 +404,7 @@ function asignarPlan() {
 }
 
 async function getReporteViajesPorRealizar() {
-	let idUsuario = document.querySelector("#idUsuarioPorRealizar").value;
+	let idUsuario = document.querySelector("#idUsuario").value;
 	let url = "usuario/viajesPendientes/" + idUsuario;
 	let r = await fetch(url, {
 		'method': 'GET',
@@ -419,7 +419,7 @@ async function getReporteViajesPorRealizar() {
 }
 
 async function getReporteViajesFinalizados() {
-	let idUsuario = document.querySelector("#idUsuarioFinalizados").value;
+	let idUsuario = document.querySelector("#idUsuario").value;
 	let url = "usuario/viajesFinalizados/" + idUsuario;
 	let r = await fetch(url, {
 		'method': 'GET',
@@ -454,7 +454,7 @@ async function planesSegunViaje() {
 
 
 async function getReporteViajesRango() {
-	let idUsuario = document.querySelector("#idUsuarioRango").value;
+	let idUsuario = document.querySelector("#idUsuario").value;
 	let fecha1 = document.querySelector("#idFecha1Rango").value;
 	let fecha2 = document.querySelector("#idFecha2Rango").value;
 	let url = "usuario/viajesRangoFecha/" + idUsuario + "/" + fecha1 + "/" + fecha2;
@@ -469,11 +469,9 @@ async function getReporteViajesRango() {
 	let contenedor = document.querySelector("#contenedorViajeRango");
 	contenedor.innerHTML = JSON.stringify(json);
 }
-async function getViajesZona() {
-	let idUsuario = document.querySelector("#idUsuarioZona").value;
+async function getViajesFiltroZona() {
+	let idUsuario = document.querySelector("#idUsuario").value;
 	let zona = document.querySelector("#idZona").value;
-
-
 	let url = "usuario/viajesPorZona/" + idUsuario + "/" + zona;
 
 	let r = await fetch(url, {
@@ -484,7 +482,7 @@ async function getViajesZona() {
 	});
 	let json = await r.json();
 	console.log(json);
-	let contenedor = document.querySelector("#contenedorZona");
+	let contenedor = document.querySelector("#contenedorViajeFiltroZona");
 	contenedor.innerHTML = JSON.stringify(json);
 }
 async function getUsuarioMasViajes() {
