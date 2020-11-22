@@ -13,7 +13,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 * @version Octubre 21, 2020
 */
 @SpringBootApplication
-@EnableSwagger2
 public class EntregableTpEspecialApplication {
 
 		/**

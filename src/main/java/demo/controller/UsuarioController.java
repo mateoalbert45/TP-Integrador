@@ -69,19 +69,9 @@ public class UsuarioController {
 		List<Viaje> viajesPendientes = new ArrayList<Viaje>();
 		if (viajes.size() != 0) {
 			for (Viaje v : viajes) {
-				if (v.getFechaFin().getYear() > LocalDate.now().getYear()) {
-					viajesPendientes.add(v);
-				} else {
-					if (v.getFechaFin().getYear() == LocalDate.now().getYear()
-							&& v.getFechaFin().getMonthValue() > LocalDate.now().getMonthValue()) {
-						viajesPendientes.add(v);
-					} else {
-						if (v.getFechaFin().getYear() == LocalDate.now().getYear()
-								&& v.getFechaFin().getMonthValue() == LocalDate.now().getMonthValue()
-								&& v.getFechaFin().getDayOfMonth() > LocalDate.now().getDayOfMonth())
-							viajesPendientes.add(v);
-					}
-				}
+			    if((v.getFechaInicio().compareTo(LocalDate.now()) > 0)) {
+			    	viajesPendientes.add(v);
+			    }
 			}
 		}
 		return viajesPendientes;
@@ -94,19 +84,9 @@ public class UsuarioController {
 		List<Viaje> viajesFinalizados = new ArrayList<Viaje>();
 		if (viajes.size() != 0) {
 			for (Viaje v : viajes) {
-				if (v.getFechaFin().getYear() < LocalDate.now().getYear()) {
+			    if((v.getFechaFin().compareTo(LocalDate.now()) < 0)) {
 					viajesFinalizados.add(v);
-				} else {
-					if (v.getFechaFin().getYear() == LocalDate.now().getYear()
-							&& v.getFechaFin().getMonthValue() < LocalDate.now().getMonthValue()) {
-						viajesFinalizados.add(v);
-					} else {
-						if (v.getFechaFin().getYear() == LocalDate.now().getYear()
-								&& v.getFechaFin().getMonthValue() == LocalDate.now().getMonthValue()
-								&& v.getFechaFin().getDayOfMonth() < LocalDate.now().getDayOfMonth())
-							viajesFinalizados.add(v);
-					}
-				}
+			    }
 			}
 		}
 		return viajesFinalizados;
@@ -121,7 +101,7 @@ public class UsuarioController {
 		if(viajes.size() != 0) {
 			for(Viaje v: viajes) {
 				System.out.println(v.getFechaInicio().compareTo(fechaPrincipio));
-			    if((v.getFechaInicio().compareTo(fechaPrincipio) >= 1)&&(v.getFechaFin().compareTo(fechaFin) <= -1)) {
+			    if((v.getFechaInicio().compareTo(fechaPrincipio) >= 0)&&(v.getFechaFin().compareTo(fechaFin) <= 0)) {
 			    	viajesRangoFecha.add(v);
 			    }
 			    }

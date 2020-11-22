@@ -47,10 +47,10 @@ class LoadDatabase {
     		@Qualifier("viajePlanRepository") ViajePlanRepository repositoryViajePlan,
     		@Qualifier("hotelRepository") HotelRepository repositoryHotel){
 		 return args -> {
-			 	LocalDate fecha1 = LocalDate.of(2020, 9, 10);
-			 	LocalDate fecha2 = LocalDate.of(2020, 9, 11);
-			 	LocalDate fecha3 = LocalDate.of(2020, 10, 10);
-			 	LocalDate fecha4 = LocalDate.of(2020, 10, 11);
+			 	LocalDate fecha1 = LocalDate.of(2020, 11, 20);
+			 	LocalDate fecha2 = LocalDate.of(2020, 11, 22);
+			 	LocalDate fecha3 = LocalDate.of(2020, 11, 25);
+			 	LocalDate fecha4 = LocalDate.of(2020, 11, 27);
 			
 		    	Usuario u1 = new Usuario(Long.valueOf("1"), "a","a", "a");
 		    	Usuario u2 = new Usuario(Long.valueOf("2"), "b","b", "b");
@@ -64,12 +64,12 @@ class LoadDatabase {
 		    	Plan p3 = new PlanHotel(Long.valueOf("3"), "PlanC", h1);
 
 		    	
-		    	Viaje viaje1 = new Viaje(Long.valueOf("1"), "viajeA", fecha3, fecha4, "viajeA");
+		    	Viaje viaje1 = new Viaje(Long.valueOf("1"), "viajeA", fecha1, fecha2, "viajeA");
 		    	viaje1.addDestino("ARG");
 		    	viaje1.addDestino("CHI");
 		    	viaje1.setUsuario(u1);
 
-		    	Viaje viaje2 = new Viaje(Long.valueOf("2"), "viajeB", fecha1, fecha2, "viajeB");
+		    	Viaje viaje2 = new Viaje(Long.valueOf("2"), "viajeB", fecha3, fecha4, "viajeB");
 		    	viaje2.addDestino("CHI");
 		    	viaje2.setUsuario(u1);
 

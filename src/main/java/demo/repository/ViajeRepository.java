@@ -4,12 +4,16 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import demo.model.Plan;
 import demo.model.Usuario;
 import demo.model.Viaje;
 import demo.model.Vuelo;
 
+@Repository
 public interface ViajeRepository extends JpaRepository<Viaje, Long>{
 
 	   @Query("select u FROM Usuario u where id=:idUsuario")
