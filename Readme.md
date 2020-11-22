@@ -1,6 +1,6 @@
 # Trabajo Practico Integrador
 
-En este trabajo se implemento una agenda de viajes mediante servicios Rest utilizando como framework Spring Boot, 
+En este trabajo se implementó en Java una agenda de viajes mediante servicios Rest utilizando como framework Spring Boot, 
 
 ### Wiki de referencia
 A continuacion se dejan los links a las wikis:
