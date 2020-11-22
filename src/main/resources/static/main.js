@@ -334,13 +334,14 @@ let openFile2 = function (event) {
 }
 
 async function getVuelos() {
-	let url = "vuelo/getAll";
+	let idUsuario = document.querySelector("#idUsuario").value;
+	let url = "vuelo/getVuelosSegunUsuario/" + idUsuario;
 	let r = await fetch(url, {
-			 'method': 'GET',
-			 headers:{
+		'method': 'GET',
+		headers:{
 			 'mode': 'cors',
 			 'Authorization': token}
-	 });
+	});
 	let json = await r.json();
 	console.log(json);
 	let contenedor = document.querySelector("#contenedorVuelo");
