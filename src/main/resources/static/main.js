@@ -9,7 +9,7 @@ document.querySelector("#submitPlanesSegunViaje").addEventListener("click", plan
 document.querySelector("#submitPorRealizar").addEventListener("click", getReporteViajesPorRealizar);
 document.querySelector("#submitFinalizados").addEventListener("click", getReporteViajesFinalizados);
 document.querySelector("#submitRango").addEventListener("click", getReporteViajesRango);
-document.querySelector("#submitZona").addEventListener("click", getViajesZona);
+document.querySelector("#submitViajeFiltroZona").addEventListener("click", getViajesFiltroZona);
 document.querySelector("#submitGetUsuarioMasViajes").addEventListener("click", getUsuarioMasViajes);
 document.querySelector("#submitGetZona").addEventListener("click", getViajesZona);
 document.querySelector("#submitAphHotel").addEventListener("click", asignarPlanHotel);
@@ -294,16 +294,16 @@ let openFile2 = function (event) {
 					"fechaLlegada": fechaIni,
 					"fechaSalida": fechaFin
 				};
-			
+
 				let plan = {
 					"id": idPlan,
 					"descripcion": descrip,
 					"hotel": hotel
 				}
-				
+
 				let urlAddPlanHotel = "plan/addPlanHotel/" + idPlan + "/" + descrip;
 				let urlAsignarPlanHotel = "viajePlan/asignarPlanViaje/" + idViaje + "/" + idPlan;
-				
+
 				fetch(urlAddPlanHotel, {
 					'method': 'POST',
 					'headers': {
@@ -324,8 +324,8 @@ let openFile2 = function (event) {
 				}, function () {
 					// rechazo
 				});
-				
-				
+
+
 			}
 			i++;
 		}
@@ -334,11 +334,13 @@ let openFile2 = function (event) {
 }
 
 async function getVuelos() {
-	let url = "vuelo/getAll";
+	let idUsuario = document.querySelector("#idUsuario").value;
+	let url = "vuelo/getVuelosSegunUsuario/" + idUsuario;
 	let r = await fetch(url, {
 		'method': 'GET',
-		'mode': 'cors',
-		'Authorization': token
+		headers:{
+			 'mode': 'cors',
+			 'Authorization': token}
 	});
 	let json = await r.json();
 	console.log(json);
@@ -354,7 +356,9 @@ async function login() {
 	let url = "user" + "?user=" + nombre + "&password=" + contraseña;
 	let r = await fetch(url, {
 		'method': 'GET',
-		'mode': 'cors'
+		headers:{
+		'mode': 'cors',
+		'Authorization': token}
 	});
 	let json = await r.json();
 	console.log(json);
@@ -400,12 +404,13 @@ function asignarPlan() {
 }
 
 async function getReporteViajesPorRealizar() {
-	let idUsuario = document.querySelector("#idUsuarioPorRealizar").value;
+	let idUsuario = document.querySelector("#idUsuario").value;
 	let url = "usuario/viajesPendientes/" + idUsuario;
 	let r = await fetch(url, {
 		'method': 'GET',
+		headers:{
 		'mode': 'cors',
-		'Authorization': token
+		'Authorization': token}
 	});
 	let json = await r.json();
 	console.log(json);
@@ -414,12 +419,13 @@ async function getReporteViajesPorRealizar() {
 }
 
 async function getReporteViajesFinalizados() {
-	let idUsuario = document.querySelector("#idUsuarioFinalizados").value;
+	let idUsuario = document.querySelector("#idUsuario").value;
 	let url = "usuario/viajesFinalizados/" + idUsuario;
 	let r = await fetch(url, {
 		'method': 'GET',
+		headers:{
 		'mode': 'cors',
-		'Authorization': token
+		'Authorization': token}
 	});
 	let json = await r.json();
 	console.log(json);
@@ -436,8 +442,9 @@ async function planesSegunViaje() {
 
 	let r = await fetch(url, {
 		'method': 'GET',
+		headers:{
 		'mode': 'cors',
-		'Authorization': token
+		'Authorization': token}
 	});
 	let json = await r.json();
 	console.log(json);
@@ -447,43 +454,44 @@ async function planesSegunViaje() {
 
 
 async function getReporteViajesRango() {
-	let idUsuario = document.querySelector("#idUsuarioRango").value;
+	let idUsuario = document.querySelector("#idUsuario").value;
 	let fecha1 = document.querySelector("#idFecha1Rango").value;
 	let fecha2 = document.querySelector("#idFecha2Rango").value;
 	let url = "usuario/viajesRangoFecha/" + idUsuario + "/" + fecha1 + "/" + fecha2;
 	let r = await fetch(url, {
 		'method': 'GET',
+		headers:{
 		'mode': 'cors',
-		'Authorization': token
+		'Authorization': token}
 	});
 	let json = await r.json();
 	console.log(json);
 	let contenedor = document.querySelector("#contenedorViajeRango");
 	contenedor.innerHTML = JSON.stringify(json);
 }
-async function getViajesZona() {
-	let idUsuario = document.querySelector("#idUsuarioZona").value;
+async function getViajesFiltroZona() {
+	let idUsuario = document.querySelector("#idUsuario").value;
 	let zona = document.querySelector("#idZona").value;
-
-
 	let url = "usuario/viajesPorZona/" + idUsuario + "/" + zona;
 
 	let r = await fetch(url, {
 		'method': 'GET',
+		headers:{
 		'mode': 'cors',
-		'Authorization': token
+		'Authorization': token}
 	});
 	let json = await r.json();
 	console.log(json);
-	let contenedor = document.querySelector("#contenedorZona");
+	let contenedor = document.querySelector("#contenedorViajeFiltroZona");
 	contenedor.innerHTML = JSON.stringify(json);
 }
 async function getUsuarioMasViajes() {
 	let url = "viaje/usuarioMasViajes";
 	let r = await fetch(url, {
 		'method': 'GET',
+		headers:{
 		'mode': 'cors',
-		'Authorization': token
+		'Authorization': token}
 	});
 	let json = await r.json();
 	console.log(json);
@@ -495,8 +503,9 @@ async function getViajesZona() {
 	let url = "viaje/masViajesPorZona";
 	let r = await fetch(url, {
 		'method': 'GET',
+		headers:{
 		'mode': 'cors',
-		'Authorization': token
+		'Authorization': token}
 	});
 	let json = await r.json();
 	console.log(json);

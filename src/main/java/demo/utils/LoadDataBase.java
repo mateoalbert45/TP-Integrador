@@ -60,7 +60,7 @@ class LoadDatabase {
 		    	Hotel h1 = new Hotel(Long.valueOf("1"), "hotelA", "hotelA", 5, "10/10/2020", "11/10/2020");
 
 		    	Plan p1 = new Plan(Long.valueOf("1"), "PlanA");
-		    	Plan p2= new PlanVuelo(Long.valueOf("2"), "PlanB", vu1);
+		    	Plan p2=  new PlanVuelo(Long.valueOf("2"), "PlanB", vu1);
 		    	Plan p3 = new PlanHotel(Long.valueOf("3"), "PlanC", h1);
 
 		    	
@@ -80,11 +80,11 @@ class LoadDatabase {
 
 				ViajePlanPK pK1 = new ViajePlanPK(Long.valueOf("1"), Long.valueOf("1"));
 				ViajePlanPK pk2 = new ViajePlanPK(Long.valueOf("2"), Long.valueOf("2"));
-				ViajePlanPK pk3 = new ViajePlanPK(Long.valueOf("3"), Long.valueOf("3"));
+				ViajePlanPK pk3 = new ViajePlanPK(Long.valueOf("2"), Long.valueOf("3"));
 
 				ViajePlan vp1 = new ViajePlan(pK1, viaje1 , p1);
 				ViajePlan vp2 = new ViajePlan(pk2, viaje2 , p2);
-				ViajePlan vp3 = new ViajePlan(pk3, viaje3 , p3);
+				ViajePlan vp3 = new ViajePlan(pk3, viaje2 , p3);
 
 				
 		    	log.info("Preloading " + repositoryUsuario.save(u1));

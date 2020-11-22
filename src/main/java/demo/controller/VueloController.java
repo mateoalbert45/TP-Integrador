@@ -61,6 +61,9 @@ public class VueloController {
 		        repository.deleteById(id);
 		    }
 		
-
+	    @GetMapping("/getVuelosSegunUsuario/{idUsuario}")
+	    public Iterable<Vuelo> getVuelosSegunUsario(@PathVariable Long idUsuario) {
+	        return repository.vuelosSegunUsuario(idUsuario);
+	    }
 
 }

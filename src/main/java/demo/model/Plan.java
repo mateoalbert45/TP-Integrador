@@ -44,6 +44,17 @@ public class  Plan {
 		return this;
 		
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "Plan [id=" + id + ", descripcion=" + descripcion + ", viajes=" + viajes + "]";
+	}
+	
+	
+	
+	
 	
 	
 }
