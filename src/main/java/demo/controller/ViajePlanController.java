@@ -79,6 +79,13 @@ public class ViajePlanController {
 	    @GetMapping("/planSegunViaje/{idViaje}")
 	    public Object planSegunViaje(@PathVariable Long idViaje) {
 	    	String planes = "";
+	    	Plan po = repository.planSegunViaje(idViaje).get(0);
+    		System.out.println("de aca");
+
+    		System.out.println(po.getId());
+    		System.out.println(po.toString());
+    		System.out.println("hasta aca");
+
 	    	for(Plan p: repository.planSegunViaje(idViaje)) {
 	    		System.out.println(p.toString());
 	    	planes += p.toString() + "  ";

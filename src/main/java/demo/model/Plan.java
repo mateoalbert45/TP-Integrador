@@ -49,7 +49,7 @@ public class  Plan {
 
 	@Override
 	public String toString() {
-		return "Plan [id=" + id + ", descripcion=" + descripcion + ", viajes=" + viajes + "]";
+		return "Plan [id=" + id + ", descripcion=" + descripcion + "]";
 	}
 	
 	
